@@ -1,0 +1,117 @@
+{
+ "slug": "philippines",
+ "order": 1,
+ "title": "Aboitiz 세부·보홀 프로젝트 데이터 허브",
+ "card_title": "필리핀 — 세부·보홀",
+ "card_desc": "세부 막탄·보홀 팡라오 공항 한국 시장 제안용. 한국↔필리핀 주간 운항, 원문 스케줄, 기종별 좌석.",
+ "lead": "세부 막탄·보홀 팡라오 공항 한국 시장 제안을 위한 데이터를 한곳에 모아, 누구나 읽기 쉬운 형태로 보고 골라서 문서화할 수 있게 정리합니다.",
+ "R": "필리핀",
+ "focus": [
+  "CEB",
+  "TAG"
+ ],
+ "focus_label": "프로젝트 대상",
+ "focus_short": "프로젝트",
+ "focus_names": "세부·보홀",
+ "dest": [
+  {
+   "code": "CEB",
+   "name": "세부"
+  },
+  {
+   "code": "TAG",
+   "name": "보홀"
+  },
+  {
+   "code": "MNL",
+   "name": "마닐라"
+  },
+  {
+   "code": "CRK",
+   "name": "클라크"
+  },
+  {
+   "code": "KLO",
+   "name": "칼리보(보라카이)"
+  }
+ ],
+ "kr": [
+  {
+   "code": "ICN",
+   "name": "인천"
+  },
+  {
+   "code": "PUS",
+   "name": "부산"
+  },
+  {
+   "code": "CJJ",
+   "name": "청주"
+  }
+ ],
+ "supply_kr": [
+  "ICN",
+  "PUS"
+ ],
+ "tabs": [
+  "overview",
+  "week",
+  "detail",
+  "supply",
+  "seats",
+  "seatmap",
+  "glossary"
+ ],
+ "overview_kpis": [
+  {
+   "label": "세부·보홀 주간 직항",
+   "tag": true,
+   "source": "headline",
+   "field": "project_weekly",
+   "row": 0,
+   "sub": "인천·부산 출발 합계, 회/주"
+  },
+  {
+   "label": "필리핀 전체 주간 직항",
+   "source": "headline",
+   "field": "all_weekly",
+   "row": 0,
+   "sub": "세부·보홀·마닐라·클라크·칼리보, 회/주"
+  }
+ ],
+ "week_groups": [
+  {
+   "label": "세부·보홀",
+   "codes": [
+    "CEB",
+    "TAG"
+   ],
+   "tag": true
+  }
+ ],
+ "day_segments": [
+  {
+   "name": "세부",
+   "codes": [
+    "CEB"
+   ]
+  },
+  {
+   "name": "보홀",
+   "codes": [
+    "TAG"
+   ]
+  }
+ ],
+ "day_seg_desc": "세부·보홀과 기타 필리핀 공항으로",
+ "pair_plus1": [
+  "PR"
+ ],
+ "basis_label": "원문",
+ "show_week_diff": true,
+ "week_diff_title": "기존 원문(10/15 제공)과 다른 점",
+ "winter_title": "동계(10/25~) 지방 출발 필리핀편",
+ "winter_note": "공항 공식 동계 스케줄이 아직 올라오지 않아(10/16 확인) 위 표에는 넣지 않았습니다. 뉴스로 확인된 노선만 따로 모았고, 공식 스케줄이 나오면 확인 후 반영합니다. 각주 번호에 마우스를 올리면 근거 기사가 보입니다.",
+ "focus_seats_sub": " · 세부·보홀 <span data-source=\"detail_headline\" data-field=\"proj_seats\" data-row=\"0\">—</span>석",
+ "how_note": "세부 막탄·보홀 팡라오 공항 한국 시장 진단에 쓰는 데이터를 한곳에 모은 페이지입니다."
+}

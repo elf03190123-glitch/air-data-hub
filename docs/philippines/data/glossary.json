@@ -1,0 +1,147 @@
+[
+ {
+  "code": "KE",
+  "category": "항공사",
+  "meaning": "대한항공"
+ },
+ {
+  "code": "OZ",
+  "category": "항공사",
+  "meaning": "아시아나항공"
+ },
+ {
+  "code": "7C",
+  "category": "항공사",
+  "meaning": "제주항공"
+ },
+ {
+  "code": "LJ",
+  "category": "항공사",
+  "meaning": "진에어"
+ },
+ {
+  "code": "5J",
+  "category": "항공사",
+  "meaning": "세부퍼시픽"
+ },
+ {
+  "code": "PR",
+  "category": "항공사",
+  "meaning": "필리핀항공"
+ },
+ {
+  "code": "TW",
+  "category": "항공사",
+  "meaning": "티웨이항공"
+ },
+ {
+  "code": "ICN",
+  "category": "공항",
+  "meaning": "인천국제공항"
+ },
+ {
+  "code": "PUS",
+  "category": "공항",
+  "meaning": "김해국제공항(부산)"
+ },
+ {
+  "code": "CEB",
+  "category": "공항",
+  "meaning": "세부 막탄국제공항"
+ },
+ {
+  "code": "TAG",
+  "category": "공항",
+  "meaning": "보홀 팡라오국제공항"
+ },
+ {
+  "code": "MNL",
+  "category": "공항",
+  "meaning": "마닐라 니노이아키노국제공항"
+ },
+ {
+  "code": "CRK",
+  "category": "공항",
+  "meaning": "클라크국제공항"
+ },
+ {
+  "code": "KLO",
+  "category": "공항",
+  "meaning": "칼리보국제공항(보라카이 관문)"
+ },
+ {
+  "code": "781",
+  "category": "기종",
+  "meaning": "B787-10 (대형)"
+ },
+ {
+  "code": "7M8",
+  "category": "기종",
+  "meaning": "B737 MAX 8 (중소형)"
+ },
+ {
+  "code": "32Q",
+  "category": "기종",
+  "meaning": "A321neo (중소형)"
+ },
+ {
+  "code": "738",
+  "category": "기종",
+  "meaning": "B737-800 (중소형)"
+ },
+ {
+  "code": "321",
+  "category": "기종",
+  "meaning": "A321 (중소형)"
+ },
+ {
+  "code": "333",
+  "category": "기종",
+  "meaning": "A330-300 (대형)"
+ },
+ {
+  "code": "773",
+  "category": "기종",
+  "meaning": "B777-300 (대형)"
+ },
+ {
+  "code": "339",
+  "category": "기종",
+  "meaning": "A330-900neo (대형)"
+ },
+ {
+  "code": "D",
+  "category": "표기 규칙",
+  "meaning": "매일 운항"
+ },
+ {
+  "code": "1~7",
+  "category": "표기 규칙",
+  "meaning": "운항 요일 (1=월 … 7=일). 예: 2456 = 화·목·금·토"
+ },
+ {
+  "code": "+1",
+  "category": "표기 규칙",
+  "meaning": "다음날 도착"
+ },
+ {
+  "code": "0 (경유)",
+  "category": "표기 규칙",
+  "meaning": "직항 (경유 없음)"
+ },
+ {
+  "code": "T1·T2·T3",
+  "category": "표기 규칙",
+  "meaning": "터미널 번호 / I = 국제선"
+ },
+ {
+  "code": "17OCT26 24OCT26",
+  "category": "표기 규칙",
+  "meaning": "해당 스케줄 적용 기간 (2026년 10월 17일~24일)"
+ },
+ {
+  "code": "4:25",
+  "category": "표기 규칙",
+  "meaning": "실제 비행시간 (출발·도착 시각은 각 현지 시각, 필리핀은 한국보다 1시간 늦음)"
+ }
+]

@@ -1,0 +1,32 @@
+{
+ "flights": {
+  "title": "항공편별 기종(조사)",
+  "description": "인천 출발 편마다 실제 투입 기종과 현지 도착 시각(확인된 것만)을 Trip.com 운항기록·AeroLOPA·AeroRoutes로 확인해 정리한 표. 2026-11-15 조사.",
+  "updated": "2026-11-15"
+ },
+ "glossary": {
+  "title": "항공 코드 사전",
+  "description": "항공사·공항·기종 코드와 표기 규칙.",
+  "updated": "2026-11-15"
+ },
+ "schedule_week": {
+  "title": "한국↔중앙아시아 주간 운항(공항 공식)",
+  "description": "인천국제공항공사 여객 출·도착 시간표에서 기간 내 실제 운항을 날짜별로 받아 편별로 묶은 표. 지방공항 7곳(한국공항공사 국제선 운항스케줄)도 조회했으나 3국 노선 없음.",
+  "updated": "2026-11-15"
+ },
+ "seat_configs": {
+  "title": "기종별 좌석 구성",
+  "description": "한국–중앙아시아 직항에 투입되는 항공사·기종별 좌석 수와 배치. AeroLOPA·seatmaps.com 기준.",
+  "updated": "2026-11-15"
+ },
+ "week_meta": {
+  "title": "주간 스케줄 조회 기간",
+  "description": "주간 운항 스케줄의 기간·조회일.",
+  "updated": "2026-11-15"
+ },
+ "winter_planned": {
+  "title": "신규·추진·계절 노선(뉴스)",
+  "description": "공항 공식 스케줄에 없지만 뉴스로 확인된 증편·하계 운항·운휴·제안 노선. 근거 기사 포함.",
+  "updated": "2026-11-15"
+ }
+}

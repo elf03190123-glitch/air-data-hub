@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aboitiz 세부·보홀 프로젝트 데이터 허브</title>
+<meta name="description" content="세부 막탄·보홀 팡라오 공항 한국 시장 제안용. 한국↔필리핀 주간 운항, 원문 스케줄, 기종별 좌석.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/hub.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>window.DASH_SOURCES = ["flights", "glossary", "schedule_timeline", "schedule_week", "seat_configs", "week_meta", "winter_planned"];
+window.HUB = {"slug": "philippines", "order": 1, "title": "Aboitiz 세부·보홀 프로젝트 데이터 허브", "card_title": "필리핀 — 세부·보홀", "R": "필리핀", "focus": ["CEB", "TAG"], "focus_label": "프로젝트 대상", "focus_short": "프로젝트", "focus_names": "세부·보홀", "dest": [{"code": "CEB", "name": "세부"}, {"code": "TAG", "name": "보홀"}, {"code": "MNL", "name": "마닐라"}, {"code": "CRK", "name": "클라크"}, {"code": "KLO", "name": "칼리보(보라카이)"}], "kr": [{"code": "ICN", "name": "인천"}, {"code": "PUS", "name": "부산"}, {"code": "CJJ", "name": "청주"}], "supply_kr": ["ICN", "PUS"], "tabs": ["overview", "week", "detail", "supply", "seats", "seatmap", "glossary"], "overview_kpis": [{"label": "세부·보홀 주간 직항", "tag": true, "source": "headline", "field": "project_weekly", "row": 0, "sub": "인천·부산 출발 합계, 회/주"}, {"label": "필리핀 전체 주간 직항", "source": "headline", "field": "all_weekly", "row": 0, "sub": "세부·보홀·마닐라·클라크·칼리보, 회/주"}], "week_groups": [{"label": "세부·보홀", "codes": ["CEB", "TAG"], "tag": true}], "day_segments": [{"name": "세부", "codes": ["CEB"]}, {"name": "보홀", "codes": ["TAG"]}], "day_seg_desc": "세부·보홀과 기타 필리핀 공항으로", "pair_plus1": ["PR"], "basis_label": "원문", "show_week_diff": true, "week_diff_title": "기존 원문(10/15 제공)과 다른 점", "winter_title": "동계(10/25~) 지방 출발 필리핀편", "focus_seats_sub": " · 세부·보홀 <span data-source=\"detail_headline\" data-field=\"proj_seats\" data-row=\"0\">—</span>석"};</script>
+<script src="../assets/dash-shim.js"></script>
+</head>
+<body>
+<div id="dash-root">
+<div class="ab">
+  <header>
+    <p class="ab-crumb"><a href="../">← 항공 데이터 허브</a></p>
+    <h1 class="ab-title" id="hub-title">Aboitiz 세부·보홀 프로젝트 데이터 허브</h1>
+    <p class="ab-lead">세부 막탄·보홀 팡라오 공항 한국 시장 제안을 위한 데이터를 한곳에 모아, 누구나 읽기 쉬운 형태로 보고 골라서 문서화할 수 있게 정리합니다.</p>
+    <div class="ab-upd">
+      <span class="ab-upd-meta">현재 주간 스케줄: <b><span data-source="week_meta" data-field="label" data-row="0">—</span></b> · <span data-source="week_meta" data-field="queried" data-row="0">—</span> 조회</span>
+    </div>
+  </header>
+
+  <nav class="ab-tabs" role="tablist">
+    <button class="ab-tab" role="tab" data-tab="overview" id="tab-overview">개요</button>
+    <button class="ab-tab" role="tab" data-tab="week" id="tab-week">주간 운항 스케줄</button>
+    <button class="ab-tab" role="tab" data-tab="detail" id="tab-detail">항공편 상세</button>
+    <button class="ab-tab" role="tab" data-tab="supply" id="tab-supply">항공 공급 (원문)</button>
+    <button class="ab-tab" role="tab" data-tab="seats" id="tab-seats">기종별 좌석</button>
+    <button class="ab-tab" role="tab" data-tab="seatmap" id="tab-seatmap">좌석 지도</button>
+    <button class="ab-tab" role="tab" data-tab="glossary" id="tab-glossary">코드 사전</button>
+  </nav>
+
+  <!-- 개요 -->
+  <section class="ab-page" id="overview">
+    <div class="ab-kpis" id="overview-kpis"></div>
+    <div class="ab-grid">
+      <div class="ab-card" id="data-catalog">
+        <h3>데이터 목록</h3>
+        <p class="ab-note">프로젝트 진단에 필요한 데이터입니다. 자료가 들어오는 대로 각 항목을 이 허브에 탭으로 추가합니다.</p>
+        <ul class="ab-list">
+          <li><div>주간 운항 스케줄 — 한국↔필리핀 양방향<div class="ab-meta">공항 공식 자료 · <span data-source="week_meta" data-field="label" data-row="0">—</span> 실제 운항 · <span data-source="week_meta" data-field="queried" data-row="0">—</span> 조회</div></div><span><span class="ab-pill ab-done">정리 완료</span> <button class="ab-go" data-go="week">보기</button></span></li>
+          <li><div>항공편 상세 — 공항 공식 스케줄 + 원문 기종·좌석 통합 (양방향)<div class="ab-meta">편명 기준 결합 · 주간 공급석 포함</div></div><span><span class="ab-pill ab-done">정리 완료</span> <button class="ab-go" data-go="detail">보기</button></span></li>
+          <li><div>항공 공급 (원문) — 한국 출발 필리핀 직항 스케줄<div class="ab-meta">2026-10-15 제공 원문 · 하계 스케줄(~10/24)</div></div><span><span class="ab-pill ab-done">정리 완료</span> <button class="ab-go" data-go="supply">보기</button></span></li>
+          <li><div>공항별 한국인 입국 추이<div class="ab-meta">세부 막탄 vs 보홀 팡라오, 2024~2026 월별</div></div><span class="ab-pill">자료 대기</span></li>
+          <li><div>체류 패턴 · 오픈조 공급<div class="ab-meta">세부 단독 / 보홀 단독 / 세부 IN·보홀 OUT</div></div><span class="ab-pill">자료 대기</span></li>
+          <li><div>이탈 고객군 · 경쟁지 이동<div class="ab-meta">연령·여행 유형·예산대, 필리핀 내/동남아/일본</div></div><span class="ab-pill">자료 대기</span></li>
+          <li><div>여행사 Top 15 세부·보홀 상품<div class="ab-meta">상품 포트폴리오 변화</div></div><span class="ab-pill">자료 대기</span></li>
+          <li><div>OTA 상품 노출 현황<div class="ab-meta">네이버·카카오 등</div></div><span class="ab-pill">자료 대기</span></li>
+          <li><div>신규 리조트·호텔 개발<div class="ab-meta">세부·보홀</div></div><span class="ab-pill">자료 대기</span></li>
+        </ul>
+      </div>
+      <div class="ab-card" id="how-to-use">
+        <h3>활용 방법</h3>
+        <p class="ab-note">세부 막탄·보홀 팡라오 공항 한국 시장 진단에 쓰는 데이터를 한곳에 모은 페이지입니다.</p>
+        <ol class="ab-steps">
+          <li><span class="ab-strong">보기</span> — 위 탭에서 차트·표를 확인합니다. 숫자 위에 마우스를 올리면 세부 내용이 보입니다.</li>
+          <li><span class="ab-strong">공유</span> — 탭을 연 상태의 주소(예: <code>#week</code>)를 그대로 보내면 그 탭이 열립니다.</li>
+          <li><span class="ab-strong">내려받기</span> — 아래에서 원 데이터를 CSV(엑셀) 또는 JSON으로 받을 수 있습니다.</li>
+        </ol>
+        <ul class="ab-dl">
+          <li><span title="제공받은 한국 출발 필리핀 직항 스케줄(2026-10-15 확인, 예약시스템 원문)을 일반 용어로 풀어 정리한 표. 대부분 10/24까지의 하계 스케줄이며, 항공사·기종 이름은 Claude가 코드를 풀어 적은 것.">필리핀 직항 스케줄 <span class="ab-dl-m">· 26행 · 2026-10-16</span></span><span><a href="data/flights.csv" download>CSV</a><a href="data/flights.json">JSON</a></span></li>
+          <li><span title="스케줄 원문에 쓰인 항공사·공항·기종 코드와 표기 규칙의 뜻. Claude가 일반 항공 코드 기준으로 작성한 참고표.">항공 스케줄 코드 사전 <span class="ab-dl-m">· 29행 · 2026-10-16</span></span><span><a href="data/glossary.csv" download>CSV</a><a href="data/glossary.json">JSON</a></span></li>
+          <li><span title="각 항공편의 정확한 출발·도착 시각(한국 시각 기준, 자정 넘어는 +24시로 표시). 운항 시간대 시각화용.">운항 구간 타임라인 <span class="ab-dl-m">· 23행 · 2026-10-16</span></span><span><a href="data/schedule_timeline.csv" download>CSV</a><a href="data/schedule_timeline.json">JSON</a></span></li>
+          <li><span title="인천국제공항공사 여객 출·도착 시간표(인천)와 한국공항공사 국제선 운항스케줄(부산·청주)에서 필리핀 5개 공항(마닐라·세부·보홀·클라크·칼리보) 노선만 골라 2026-10-16~10-22 실제 운항으로 정리한 양방향 표. 2026-10-16 조회, 공동운항은 실제 운항편 하나로 셈.">한국↔필리핀 주간 운항(공항 공식) <span class="ab-dl-m">· 54행 · 2026-10-16</span></span><span><a href="data/schedule_week.csv" download>CSV</a><a href="data/schedule_week.json">JSON</a></span></li>
+          <li><span title="필리핀 직항 스케줄에 나오는 항공사·기종별 클래스 좌석 수와 좌석 배치, 화물칸(벨리) 용적·컨테이너·적재 가능 무게 메모. 항공사 공개 자료·Airbus/Boeing 제원·좌석 배치도 사이트·Aircraft Commerce(2014) 추정을 바탕으로 Claude가 정리.">기종별 좌석 구성 <span class="ab-dl-m">· 11행 · 2026-10-17</span></span><span><a href="data/seat_configs.csv" download>CSV</a><a href="data/seat_configs.json">JSON</a></span></li>
+          <li><span title="주간 운항 스케줄의 조회 기간(7일)·조회일·포함된 한국 공항·시즌 안내. 업데이트 때 schedule_week와 함께 교체됩니다.">주간 스케줄 조회 기간 <span class="ab-dl-m">· 1행 · 2026-10-16</span></span><span><a href="data/week_meta.csv" download>CSV</a><a href="data/week_meta.json">JSON</a></span></li>
+          <li><span title="공항 공식 동계 스케줄 공개 전, 뉴스로 확인된 지방 출발 필리핀 노선(예정·추진 중)과 근거 기사. 2026-10-16 기준 Claude 정리.">동계 지방발 필리핀편(예정) <span class="ab-dl-m">· 2행 · 2026-10-16</span></span><span><a href="data/winter_planned.csv" download>CSV</a><a href="data/winter_planned.json">JSON</a></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 항공 공급 (원문) -->
+  <section class="ab-page" id="supply" hidden>
+    <p class="ab-lead" id="supply-takeaway" style="margin-bottom: var(--cds-gap-md);">세부·보홀 직항은 주 <span class="ab-strong" data-source="headline" data-field="project_weekly" data-row="0">—</span>회,
+      그중 <span class="ab-strong" data-source="headline" data-field="night_pct" data-row="0">—</span>%가 저녁 8시 이후 출발합니다
+      (가장 이른 편 <span class="ab-strong" data-source="headline" data-field="earliest_dep" data-row="0">—</span>). 현지 도착은 대부분 자정 전후입니다.</p>
+
+    <div class="ab-kpis" id="kpi-dest"></div>
+
+    <div class="ab-grid">
+      <div class="ab-card" id="card-dest">
+        <h3>목적지별 주간 운항</h3>
+        <p class="ab-note">요일이 확인된 편만 합산. 끝의 "+N"은 요일 미확인 편 수.</p>
+        <div class="ab-legend" id="dest-legend"></div>
+        <div class="ab-chart" id="chart-dest" data-source="by_dest"><div class="ab-box"></div><div class="ab-tip" hidden></div></div>
+      </div>
+      <div class="ab-card" id="card-time">
+        <h3>출발 시각 분포 (한국 시각)</h3>
+        <p class="ab-note">점 하나 = 항공편 1개. 점 크기 = 주간 운항 횟수, 빈 점 = 요일 미확인. 음영은 밤 8시~새벽 6시.</p>
+        <div class="ab-chart" id="chart-time" data-source="flights"><div class="ab-box"></div><div class="ab-tip" hidden></div></div>
+      </div>
+    </div>
+
+    <div class="ab-card" id="card-schedule" style="margin-bottom: var(--cds-gap-md);">
+      <h3>출발→도착 운항 시간대</h3>
+      <p class="ab-note">각 항공편이 언제 떠나 언제 도착하는지 한눈에 봅니다. 현지 시각 기준이며, 자정 넘어 도착은 "+1"로 표시.</p>
+      <div id="timeline-container" data-source="schedule_timeline">
+        <div class="ab-timeline-row dash-skeleton" style="height: 100px; border: none;"></div>
+      </div>
+    </div>
+
+    <div class="ab-card" id="card-airline" style="margin-bottom: var(--cds-gap-md);">
+      <h3>항공사별 주간 운항</h3>
+      <p class="ab-note">세부·보홀 노선 비중이 큰 항공사가 핵심 파트너 후보입니다.</p>
+      <div class="ab-legend"><span><span class="ab-sw" id="sw-proj"></span>세부·보홀</span><span><span class="ab-sw" id="sw-other"></span>기타 필리핀</span></div>
+      <div class="ab-chart" id="chart-airline" data-source="by_airline"><div class="ab-box"></div><div class="ab-tip" hidden></div></div>
+    </div>
+
+    <div class="ab-card" id="card-flights-moved" style="margin-bottom: var(--cds-gap-md);">
+      <p class="ab-note" style="margin:0;">항공편별 상세(기종·좌석·현지 도착 시각 포함)는 공항 공식 스케줄과 합쳐 '항공편 상세' 탭에 정리했습니다. <button class="ab-go" data-go="detail">항공편 상세 보기</button></p>
+    </div>
+    <div class="ab-card ab-foot" id="card-reading">
+      <div class="ab-foot-grid">
+        <div>
+          <h3>읽는 법 · 유의사항</h3>
+          <p class="ab-note">원문(항공사 예약시스템 형식)을 일반 용어로 바꿔 정리했습니다.</p>
+          <ul class="ab-list">
+            <li><div>시각은 모두 <span class="ab-strong">각 공항 현지 시각</span>입니다. 필리핀은 한국보다 1시간 늦어, 표기상 차이보다 실제 비행이 1시간 더 깁니다.</div></li>
+            <li><div><span class="ab-strong">기준일 2026-10-15</span>, 대부분 10/24까지 적용되는 하계 스케줄입니다. 10/25부터 동계 스케줄로 바뀌므로 업데이트가 필요합니다.</div></li>
+            <li><div>기종은 대형(좌석 많음)·중소형으로 구분해 공급 규모를 가늠할 수 있게 했습니다.</div></li>
+          </ul>
+        </div>
+        <div>
+          <h3>확인이 필요한 항목</h3>
+          <ul class="ab-list ab-issues" id="data-issues" data-source="flights"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 주간 운항 스케줄 (공항 공식) -->
+  <section class="ab-page" id="week" hidden>
+    <div class="ab-kpis" id="week-kpis">
+      <div class="ab-card">
+        <div class="ab-k-label">한국 → 필리핀</div>
+        <div class="ab-num dash-skeleton" data-source="week_headline" data-field="out_total" data-row="0">—</div>
+        <div class="ab-k-sub">주간 운항 횟수 · <span data-source="week_meta" data-field="label" data-row="0">—</span></div>
+      </div>
+      <div class="ab-card">
+        <div class="ab-k-label">필리핀 → 한국</div>
+        <div class="ab-num dash-skeleton" data-source="week_headline" data-field="in_total" data-row="0">—</div>
+        <div class="ab-k-sub">주간 운항 횟수 · <span data-source="week_meta" data-field="label" data-row="0">—</span></div>
+      </div>
+      <!-- 묶음(중점 공항·나라)별 카드는 hub.js 가 HUB.week_groups 로 만든다 -->
+      <div class="ab-card" id="week-kpi-routes">
+        <div class="ab-k-label">운항 노선 · 항공사</div>
+        <div class="ab-num dash-skeleton" data-source="week_headline" data-field="routes" data-row="0">—</div>
+        <div class="ab-k-sub">한국–필리핀 공항 쌍 · 항공사 <span data-source="week_headline" data-field="airlines" data-row="0">—</span>곳</div>
+      </div>
+    </div>
+
+    <div class="ab-card" id="card-week-matrix" style="margin-bottom: var(--cds-gap-md);">
+      <h3>공항별 주간 운항</h3>
+      <p class="ab-note"><span data-source="week_meta" data-field="label" data-row="0">—</span> 실제 운항 기준 주간 횟수. 칸 색이 진할수록 운항이 많습니다. "–"는 그 주에 운항이 없다는 뜻입니다. 방향을 바꿔 볼 수 있습니다.</p>
+      <div class="ab-tools"><span id="wkmx-dir"></span></div>
+      <div class="ab-mx-wrap">
+        <table class="ab-mx" id="table-week-matrix" data-source="week_by_ph" data-row-key="ph_code">
+          <thead><tr id="mx-head"></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="ab-card" id="card-winter" style="margin-bottom: var(--cds-gap-md);">
+      <h3>동계(10/25~) 지방 출발 필리핀편 <span class="ab-pill ab-plan">예정 · 추진 중</span></h3>
+      <p class="ab-note">공항 공식 동계 스케줄이 아직 올라오지 않아(10/16 확인) 위 표에는 넣지 않았습니다. 뉴스로 확인된 노선만 따로 모았고, 공식 스케줄이 나오면 확인 후 반영합니다. 각주 번호에 마우스를 올리면 근거 기사가 보입니다.</p>
+      <div class="ab-chart ab-winter" id="chart-winter" data-source="winter_planned">
+        <div class="ab-tablebox" style="max-height: none;">
+          <table class="ab-table" id="table-winter" data-source="winter_planned" data-row-key="id">
+            <thead><tr>
+              <th data-field="status"><button>상태</button></th>
+              <th data-field="fn"><button>근거</button></th>
+              <th data-field="kr_airport"><button>출발</button></th>
+              <th data-field="ph_airport"><button>도착</button></th>
+              <th data-field="airline"><button>항공사</button></th>
+              <th data-field="kind"><button>구분</button></th>
+              <th data-field="period"><button>운항 기간</button></th>
+              <th data-field="days"><button>요일</button></th>
+              <th data-field="weekly"><button>주간</button></th>
+              <th data-field="out_time"><button>가는 편</button></th>
+              <th data-field="in_time"><button>오는 편</button></th>
+              <th data-field="note"><button>비고</button></th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <ol class="ab-fn-list" id="winter-fn"></ol>
+        <div class="ab-tip ab-tip-wrap" hidden></div>
+      </div>
+    </div>
+
+    <div class="ab-card" id="card-week-day" style="margin-bottom: var(--cds-gap-md);">
+      <h3>요일별 운항 (<span data-source="week_meta" data-field="label" data-row="0">—</span>)</h3>
+      <p class="ab-note">날짜별 운항 편수를 세부·보홀과 기타 필리핀 공항으로 나눠 쌓았습니다.</p>
+      <div class="ab-tools" id="wkday-dir"></div>
+      <div class="ab-legend" id="wkday-legend"></div>
+      <div class="ab-chart" id="chart-week-day" data-source="week_by_day"><div class="ab-box"></div><div class="ab-tip" hidden></div></div>
+    </div>
+
+    <div class="ab-card" id="card-week-moved" style="margin-bottom: var(--cds-gap-md);">
+      <p class="ab-note" style="margin:0;">편별 목록은 기종·좌석 정보와 합쳐 '항공편 상세' 탭에 정리했습니다. <button class="ab-go" data-go="detail">항공편 상세 보기</button></p>
+    </div>
+    <div class="ab-card ab-foot" id="card-week-reading">
+      <div class="ab-foot-grid">
+        <div>
+          <h3>읽는 법 · 출처</h3>
+          <ul class="ab-list">
+            <li><div>시각은 <span class="ab-strong">한국 공항 기준</span>입니다. 한국→필리핀은 한국 출발 시각, 필리핀→한국은 한국 도착 시각이며, 필리핀 현지 출·도착 시각은 공항 자료에 없습니다.</div></li>
+            <li><div>인천은 <span class="ab-strong">인천국제공항공사 여객 출·도착 시간표</span>(날짜별 실제 운항), 지방공항(김해·청주 등)은 <span class="ab-strong">한국공항공사 국제선 운항스케줄</span>(요일·적용 기간)으로 <span data-source="week_meta" data-field="label" data-row="0">—</span>을 펼쳐 셌습니다. <span data-source="week_meta" data-field="queried" data-row="0">—</span> 조회.</div></li>
+            <li><div>공동운항(코드셰어)은 실제 운항편 하나로 세고, 판매 편명은 '공동운항' 열에 적었습니다.</div></li>
+            <li><div><span data-source="week_meta" data-field="season_note" data-row="0">—</span></div></li>
+          </ul>
+        </div>
+        <div id="week-diff-box">
+          <h3>기존 원문(10/15 제공)과 다른 점</h3>
+          <ul class="ab-list ab-issues" id="week-diff" data-source="week_vs_original"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 항공편 상세 (통합) -->
+  <section class="ab-page" id="detail" hidden>
+    <p class="ab-lead">공항 공식 시간표(<span data-source="week_meta" data-field="label" data-row="0">—</span>)를 기준으로, 원문(10/15 제공)의 기종·필리핀 현지 도착 시각·비행시간과 '기종별 좌석'의 좌석 수를 편명으로 합친 목록입니다.</p>
+    <div class="ab-kpis" style="margin-top: var(--cds-gap-md);">
+      <div class="ab-card"><div class="ab-k-label">한국→필리핀 주간 운항</div>
+        <div class="ab-num dash-skeleton" data-source="detail_headline" data-field="out_weekly" data-row="0">—</div>
+        <div class="ab-k-sub">필리핀→한국 <span data-source="detail_headline" data-field="in_weekly" data-row="0">—</span>회</div></div>
+      <div class="ab-card"><div class="ab-k-label">한국→필리핀 주간 공급석</div>
+        <div class="ab-num dash-skeleton" data-source="detail_headline" data-field="out_seats" data-row="0">—</div>
+        <div class="ab-k-sub">기종 확인 편 기준 · 세부·보홀 <span data-source="detail_headline" data-field="proj_seats" data-row="0">—</span>석</div></div>
+      <div class="ab-card"><div class="ab-k-label">기종 미확인 (한국→필리핀)</div>
+        <div class="ab-num dash-skeleton" data-source="detail_headline" data-field="out_unknown" data-row="0">—</div>
+        <div class="ab-k-sub">편명 수 · 주간 공급석에서 빠짐</div></div>
+    </div>
+    <div class="ab-card" id="card-detail">
+      <h3>항공편 상세</h3>
+      <p class="ab-note">방향·한국 공항·필리핀 공항으로 거르거나 검색할 수 있고, 열 제목을 누르면 정렬됩니다. 한국 시각은 공항 공식 자료, 현지 도착·비행시간·기종은 원문 기준입니다. 귀국편 기종은 같은 노선의 짝편 기종을 따랐습니다(한국·세부퍼시픽 항공사는 편명−1, 필리핀항공은 편명+1 우선).</p>
+      <div class="ab-filters">
+        <div class="ab-frow"><span class="ab-flabel">방향</span><span id="dt-chip-dir" role="group" aria-label="방향"></span></div>
+        <div class="ab-frow" id="frow-kr"><span class="ab-flabel">한국 공항</span><span id="dt-chip-kr" role="group" aria-label="한국 공항"></span></div>
+        <div class="ab-frow" id="frow-ph"><span class="ab-flabel">필리핀 공항</span><span id="dt-chip-ph" role="group" aria-label="필리핀 공항"></span></div>
+        <div class="ab-frow"><span class="ab-flabel">검색</span><input class="ab-search" id="dt-search" type="search" placeholder="항공사·편명·기종 검색" aria-label="항공편 검색"></div>
+      </div>
+      <div class="ab-tablebox">
+        <table class="ab-table" id="table-detail" data-source="flight_detail" data-row-key="id">
+          <thead><tr>
+            <th data-field="kr_airport"><button data-dsort="kr_airport">한국 공항</button></th>
+            <th data-field="ph_airport"><button data-dsort="ph_airport">필리핀 공항</button></th>
+            <th data-field="airline"><button data-dsort="airline">항공사</button></th>
+            <th data-field="flight"><button data-dsort="flight">편명</button></th>
+            <th data-field="codeshare"><button data-dsort="codeshare">공동운항</button></th>
+            <th data-field="days"><button data-dsort="days">운항 요일</button></th>
+            <th data-field="weekly"><button data-dsort="weekly">주간</button></th>
+            <th data-field="kr_time"><button data-dsort="kr_time">한국 시각</button></th>
+            <th data-field="time_basis"><button data-dsort="time_basis">시각 기준</button></th>
+            <th data-field="ph_arr"><button data-dsort="ph_arr">필리핀 도착(현지)</button></th>
+            <th data-field="duration"><button data-dsort="duration">비행시간</button></th>
+            <th data-field="aircraft"><button data-dsort="aircraft">기종</button></th>
+            <th data-field="aircraft_basis"><button data-dsort="aircraft_basis">기종 근거</button></th>
+            <th data-field="seats"><button data-dsort="seats">좌석/편</button></th>
+            <th data-field="weekly_seats"><button data-dsort="weekly_seats">주간 공급석</button></th>
+            <th data-field="terminal"><button data-dsort="terminal">터미널</button></th>
+            <th data-field="dates"><button data-dsort="dates">운항일</button></th>
+            <th data-field="source"><button data-dsort="source">출처</button></th>
+            <th data-field="note"><button data-dsort="note">비고</button></th>
+          </tr></thead>
+          <tbody></tbody>
+          <tfoot><tr id="dt-foot"></tr></tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 기종별 좌석 -->
+  <section class="ab-page" id="seats" hidden>
+    <p class="ab-lead">한국–필리핀 직항 스케줄에 투입되는 항공사·기종별 좌석 구성입니다. 같은 기종이라도 항공사마다 좌석 배치가 달라, 이 노선을 운항하는 항공사의 대표 배치를 기준으로 정리했습니다.</p>
+    <div class="ab-card" id="card-seat-table" style="margin: var(--cds-gap-md) 0;">
+      <h3>클래스별 좌석 수</h3>
+      <p class="ab-note">운항 노선과 주간 운항 횟수는 '항공 공급 (원문)' 스케줄 기준입니다(요일 미확인 편 제외). 기종 이름을 누르면 표 아래에 그 기종의 좌석 지도가 열립니다(한 번 더 누르면 닫힘).</p>
+      <div class="ab-tablebox">
+        <table class="ab-table" id="table-seats" data-source="seat_configs" data-row-key="id">
+          <thead><tr>
+            <th data-field="airline"><button>항공사</button></th>
+            <th data-field="aircraft"><button>기종</button></th>
+            <th data-field="aircraft_code"><button>코드</button></th>
+            <th data-field="total"><button>총 좌석</button></th>
+            <th data-field="first"><button>일등석</button></th>
+            <th data-field="business"><button>비즈니스</button></th>
+            <th data-field="economy"><button>이코노미</button></th>
+            <th data-source="seat_routes" data-field="routes"><button>운항 노선</button></th>
+            <th data-source="seat_routes" data-field="weekly"><button>주간 운항</button></th>
+            <th data-field="note"><button>비고</button></th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="ab-card" id="card-seat-one" hidden>
+      <div class="ab-seat-one-head"><h3 id="seat-one-title">좌석 지도</h3><button type="button" class="ab-upd-cancel" id="seat-one-close">닫기</button></div>
+      <div class="ab-legend" id="seat-one-legend"></div>
+      <div class="ab-chart ab-seat-one" id="chart-seatone" data-source="seat_configs"><div class="ab-box"></div><div class="ab-tip" hidden></div></div>
+    </div>
+  </section>
+
+  <!-- 좌석 지도 -->
+  <section class="ab-page" id="seatmap" hidden>
+    <div class="ab-card" id="card-seatmaps">
+      <h3>좌석 지도</h3>
+      <p class="ab-note">클래스별 좌석 수와 좌석 배치(예: 3-3-3)로 그린 개략도입니다. 카드의 '좌석 수 표에서 보기'를 누르면 기종별 좌석 표의 해당 줄로 이동합니다. 왼쪽이 기수(앞쪽)이며, 화장실·갤리·비상구 위치는 반영하지 않았습니다. 좌석 번호까지 보려면 각 카드의 출처 링크를 열어 보세요. 화물칸 메모의 무게는 승객·수하물을 다 실은 뒤 남는 화물 여유를 추정한 값으로, 노선 거리·연료·실제 탑승률에 따라 크게 달라집니다.</p>
+      <div class="ab-legend" id="seat-legend"></div>
+      <div class="ab-chart" id="chart-seatmaps" data-source="seat_configs"><div class="ab-box ab-seat-cards"></div><div class="ab-tip" hidden></div></div>
+    </div>
+  </section>
+
+  <!-- 코드 사전 -->
+  <section class="ab-page" id="glossary" hidden>
+    <div class="ab-card" id="card-glossary">
+      <h3>항공 스케줄 코드 사전</h3>
+      <p class="ab-note">항공사·여행사 자료에서 자주 보이는 코드의 뜻입니다. 기종별 좌석 구성은 '기종별 좌석' 탭에서 볼 수 있습니다.</p>
+      <div class="ab-tools"><input class="ab-search" id="gloss-search" type="search" placeholder="코드·뜻 검색" aria-label="코드 검색"></div>
+      <div class="ab-tablebox">
+        <table class="ab-table" id="table-glossary" data-source="glossary" data-row-key="code">
+          <thead><tr>
+            <th data-field="category"><button>구분</button></th>
+            <th data-field="code"><button>코드</button></th>
+            <th data-field="meaning"><button>뜻</button></th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+<footer class="site-foot">
+  <span>AVIAREPS Korea</span>
+  <span>주간 스케줄 10/16~10/22 · 2026-10-16 조회</span>
+</footer>
+</div>
+<script src="../assets/hub.js"></script>
+</body>
+</html>

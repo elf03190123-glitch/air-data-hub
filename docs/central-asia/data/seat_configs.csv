@@ -1,0 +1,5 @@
+﻿first,first_layout,business_name,cargo_volume,cargo_uld,cargo_weight,cargo_src,id,airline,airline_code,aircraft,aircraft_code,aircraft_label,size,total,business,economy,business_layout,economy_layout,note,source_name,source_url
+0,,,,,,,KC-763,에어아스타나,KC,B767-300ER,763,B767-300ER (대형),대형,223,30,193,1-2-1,2-3-2,"비즈니스 완전평면(Thompson Vantage), 지그재그 배치",AeroLOPA · seatmaps.com,https://www.aerolopa.com/kc-763
+0,,,,,,,KC-32Q,에어아스타나,KC,A321LR,32Q,A321LR (중소형),중소형,166,16,150,2-2,3-3,"비즈니스 완전평면, 2-2와 1-1 줄이 번갈아 배치(그림은 2-2로 단순화). 배치가 다른 기체가 있어 편마다 다를 수 있음",AeroLOPA,https://www.aerolopa.com/kc-32q-2
+0,,,,,,,DV-7M8,스캇항공,DV,B737 MAX 8,7M8,B737 MAX 8 (중소형),중소형,186,0,186,,3-3,전석 일반석. B737-800(189석)이 대신 들어올 수 있음,seatmaps.com,https://seatmaps.com/airlines/dv-scat-airlines/boeing-737-max-8/
+0,,,,,,,T5-77L,투르크메니스탄항공,T5,B777-200LR,77L,B777-200LR (대형),대형,291,28,263,2-3-2,3-3-3,일반석 배치(3-3-3)는 추정. 12월 일부 편에 B777-300ER(368석) 투입 가능성,AeroLOPA,https://www.aerolopa.com/t5-77l

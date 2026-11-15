@@ -1,0 +1,127 @@
+[
+ {
+  "code": "KC",
+  "category": "항공사",
+  "meaning": "에어아스타나 (카자흐스탄 국적사)"
+ },
+ {
+  "code": "DV",
+  "category": "항공사",
+  "meaning": "스캇항공 SCAT Airlines (카자흐스탄 심켄트 기반)"
+ },
+ {
+  "code": "T5",
+  "category": "항공사",
+  "meaning": "투르크메니스탄항공"
+ },
+ {
+  "code": "TW",
+  "category": "항공사",
+  "meaning": "티웨이항공 (트리니티항공으로 사명 변경 중)"
+ },
+ {
+  "code": "ZE",
+  "category": "항공사",
+  "meaning": "이스타항공"
+ },
+ {
+  "code": "OZ",
+  "category": "항공사",
+  "meaning": "아시아나항공 (에어아스타나 공동운항)"
+ },
+ {
+  "code": "CX",
+  "category": "항공사",
+  "meaning": "캐세이퍼시픽 (에어아스타나 공동운항)"
+ },
+ {
+  "code": "ICN",
+  "category": "공항",
+  "meaning": "인천국제공항"
+ },
+ {
+  "code": "PUS",
+  "category": "공항",
+  "meaning": "김해국제공항 (부산)"
+ },
+ {
+  "code": "ALA",
+  "category": "공항",
+  "meaning": "알마티 국제공항 (카자흐스탄)"
+ },
+ {
+  "code": "NQZ",
+  "category": "공항",
+  "meaning": "아스타나 누르술탄나자르바예프 국제공항 (카자흐스탄)"
+ },
+ {
+  "code": "CIT",
+  "category": "공항",
+  "meaning": "심켄트 국제공항 (카자흐스탄)"
+ },
+ {
+  "code": "FRU",
+  "category": "공항",
+  "meaning": "비슈케크 마나스 국제공항 (키르기스스탄)"
+ },
+ {
+  "code": "OSS",
+  "category": "공항",
+  "meaning": "오시 국제공항 (키르기스스탄)"
+ },
+ {
+  "code": "ASB",
+  "category": "공항",
+  "meaning": "아시가바트 국제공항 (투르크메니스탄)"
+ },
+ {
+  "code": "763",
+  "category": "기종",
+  "meaning": "B767-300ER"
+ },
+ {
+  "code": "32Q",
+  "category": "기종",
+  "meaning": "A321LR (A321neo 장거리형)"
+ },
+ {
+  "code": "A21N",
+  "category": "기종",
+  "meaning": "A321neo 계열 (운항기록 표기)"
+ },
+ {
+  "code": "7M8",
+  "category": "기종",
+  "meaning": "B737 MAX 8"
+ },
+ {
+  "code": "B38M",
+  "category": "기종",
+  "meaning": "B737 MAX 8 (운항기록 표기)"
+ },
+ {
+  "code": "738",
+  "category": "기종",
+  "meaning": "B737-800"
+ },
+ {
+  "code": "77L",
+  "category": "기종",
+  "meaning": "B777-200LR"
+ },
+ {
+  "code": "77W",
+  "category": "기종",
+  "meaning": "B777-300ER"
+ },
+ {
+  "code": "(+1)",
+  "category": "표기 규칙",
+  "meaning": "다음 날 도착"
+ },
+ {
+  "code": "공동운항",
+  "category": "표기 규칙",
+  "meaning": "다른 항공사가 자기 편명으로 좌석을 파는 편. 실제 운항편 하나로 센다"
+ }
+]

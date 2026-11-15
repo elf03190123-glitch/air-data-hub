@@ -1,0 +1,152 @@
+/*
+ * claude.ai Data 유형이 넣어 주던 디자인 값(--color-*, --cds-*, 글꼴)을 정적 사이트에서 직접 정의한다.
+ * 페이지 본문 CSS(index.html 의 <style>)는 이 변수들만 쓴다.
+ */
+:root {
+  color-scheme: light;
+  --font-anthropic-sans: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif;
+  --font-anthropic-serif: "Noto Serif KR", Georgia, "Times New Roman", serif;
+
+  --color-bg: #faf9f6;
+  --color-panel: #ffffff;
+  --color-fg: #1f1e1b;
+  --color-fg-muted: #6a665e;
+  --color-border-line: #e3dfd6;
+  --color-warn: #a65a00;
+  --color-ok: #2d7a4c;
+  --color-bad: #c0392b;
+
+  --chart-1: #2f6db5;
+  --chart-2: #d97a29;
+  --chart-3: #3f9b72;
+  --chart-4: #8357c5;
+  --chart-5: #c4497a;
+  --cds-chart-grid: #ebe7df;
+  --cds-chart-axis: #9a958b;
+  --cds-chart-muted: #bdb8ae;
+
+  --cds-font-size-title: 1.75rem;
+  --cds-font-size-heading: 1.05rem;
+  --cds-font-size-body: 0.95rem;
+  --cds-font-size-caption: 0.8rem;
+  --cds-font-weight-medium: 600;
+
+  --cds-gap-xs: 0.25rem;
+  --cds-gap-sm: 0.5rem;
+  --cds-gap-md: 1rem;
+  --cds-gap-lg: 1.5rem;
+  --cds-pad-xs: 0.25rem;
+  --cds-pad-sm: 0.5rem;
+  --cds-pad-md: 0.75rem;
+  --cds-pad-lg: 1.25rem;
+  --cds-radius: 8px;
+
+  --cds-surface-popover: var(--color-panel);
+  --cds-border: var(--color-border-line);
+  --cds-shadow-popover: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --cds-text-secondary: var(--color-fg-muted);
+  --cds-dur-slow: 0.4s;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-bg: #1a1918;
+    --color-panel: #242321;
+    --color-fg: #ecebe6;
+    --color-fg-muted: #a8a49b;
+    --color-border-line: #3a3834;
+    --color-warn: #f0a650;
+    --color-ok: #6cc592;
+    --color-bad: #f07b6c;
+    --chart-1: #6fa6ec;
+    --chart-2: #f0a05e;
+    --chart-3: #6cc49b;
+    --chart-4: #b291ef;
+    --chart-5: #e889ae;
+    --cds-chart-grid: #34322e;
+    --cds-chart-axis: #77736b;
+    --cds-chart-muted: #66625b;
+    --cds-shadow-popover: 0 4px 16px rgba(0, 0, 0, 0.5);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #1a1918;
+  --color-panel: #242321;
+  --color-fg: #ecebe6;
+  --color-fg-muted: #a8a49b;
+  --color-border-line: #3a3834;
+  --color-warn: #f0a650;
+  --color-ok: #6cc592;
+  --color-bad: #f07b6c;
+  --chart-1: #6fa6ec;
+  --chart-2: #f0a05e;
+  --chart-3: #6cc49b;
+  --chart-4: #b291ef;
+  --chart-5: #e889ae;
+  --cds-chart-grid: #34322e;
+  --cds-chart-axis: #77736b;
+  --cds-chart-muted: #66625b;
+  --cds-shadow-popover: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-anthropic-sans);
+  line-height: 1.45;
+}
+#dash-root { padding: 2rem 16px 1rem; overflow-x: hidden; }
+a { color: inherit; }
+button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid var(--chart-1); outline-offset: 2px; }
+
+/* 데이터가 오기 전 자리 표시 */
+.dash-skeleton {
+  color: transparent !important;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--color-border-line) 0%, color-mix(in srgb, var(--color-border-line) 40%, transparent) 50%, var(--color-border-line) 100%);
+  background-size: 200% 100%;
+  animation: dashShimmer 1.4s linear infinite;
+}
+.ab-chart > .ab-box.dash-skeleton { min-height: 10rem; }
+@keyframes dashShimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { .dash-skeleton { animation: none; } }
+
+/* 원본 화면 보정: 운항 시간대 축 눈금을 막대 위치에 맞추고, 시각 글자를 막대 오른쪽에 둠 */
+.ab-timeline-axis { margin-left: calc(10rem + var(--cds-gap-sm)); }
+.ab-timeline-axis span { position: absolute; flex: none; transform: translateX(-50%); white-space: nowrap; }
+.ab-timeline-axis span:last-child { transform: translateX(-100%); }
+#dash-root .ab-timeline-seg .ab-timeline-seg-label { left: 100%; transform: translate(6px, -50%); color: var(--color-fg-muted); font-weight: 500; }
+@media (max-width: 640px) {
+  .ab-timeline-label { min-width: 5.5rem; }
+  .ab-timeline-axis { margin-left: calc(5.5rem + var(--cds-gap-sm)); }
+}
+
+/* 정적 사이트에서 덧붙인 부분 */
+.ab-crumb { margin: 0 0 var(--cds-gap-sm); font-size: var(--cds-font-size-caption); }
+.ab-crumb a { color: var(--color-fg-muted); text-decoration: none; }
+.ab-crumb a:hover { color: var(--color-fg); text-decoration: underline; }
+.hub-index { max-width: 72rem; margin-inline: auto; }
+.hub-index .ab-title { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0 0 var(--cds-gap-xs); }
+.hub-index .ab-lead { color: var(--color-fg-muted); margin: 0 0 var(--cds-gap-lg); line-height: 1.5; }
+.hub-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: var(--cds-gap-md); }
+.hub-card { display: flex; flex-direction: column; gap: var(--cds-gap-xs); padding: var(--cds-pad-lg); background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); text-decoration: none; color: var(--color-fg); }
+.hub-card:hover { border-color: var(--color-fg-muted); }
+.hub-card-t { font-weight: var(--cds-font-weight-medium); font-size: var(--cds-font-size-heading); }
+.hub-card-d { color: var(--color-fg-muted); font-size: var(--cds-font-size-body); line-height: 1.5; }
+.hub-card-m { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); margin-top: var(--cds-gap-xs); }
+.site-foot {
+  max-width: 72rem; margin: 2rem auto 0; padding: 1rem 0 0;
+  border-top: 1px solid var(--color-border-line);
+  font-size: var(--cds-font-size-caption); color: var(--color-fg-muted);
+  display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm) var(--cds-gap-lg); justify-content: space-between;
+}
+.ab-dl { list-style: none; margin: var(--cds-gap-sm) 0 0; padding: 0; font-size: var(--cds-font-size-caption); }
+.ab-dl li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--cds-gap-xs) var(--cds-gap-sm); padding: var(--cds-pad-xs) 0; border-bottom: 1px solid var(--color-border-line); }
+.ab-dl li:last-child { border-bottom: 0; }
+.ab-dl a { color: var(--color-fg-muted); margin-left: var(--cds-gap-sm); }
+.ab-dl .ab-dl-m { color: var(--color-fg-muted); }
