@@ -1,7 +1,7 @@
 {
  "flights": {
   "title": "항공편별 기종(조사)",
-  "description": "인천 출발 편마다 실제 투입 기종과 현지 도착 시각(확인된 것만)을 Trip.com 운항기록·AeroLOPA·AeroRoutes로 확인해 정리한 표. 2026-11-15 조사.",
+  "description": "인천 출발 편마다 실제 투입 기종을 Trip.com 운항기록·AeroLOPA·AeroRoutes로 확인해 붙인 표. 요일·횟수·출발 시각은 공항 공식 시간표 값. 2026-11-15 조사.",
   "updated": "2026-11-15"
  },
  "glossary": {

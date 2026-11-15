@@ -4,21 +4,25 @@
  "title": "중앙아시아 3국 항공 데이터 허브",
  "card_title": "중앙아시아 — 카자흐스탄·키르기스스탄·투르크메니스탄",
  "card_desc": "한국↔중앙아시아 3국 직항의 주간 운항, 항공편 상세, 기종별 좌석, 신규·추진 노선.",
- "lead": "카자흐스탄·키르기스스탄·투르크메니스탄과 한국을 오가는 직항을 공항 공식 시간표 기준으로 모으고, 기종·좌석과 신규·추진 노선을 함께 정리합니다.",
+ "lead": "카자흐스탄·키르기스스탄·투르크메니스탄과 한국을 오가는 직항을 공항 공식 시간표로만 모으고, 나라별 수도 공항(아스타나·비슈케크·아시가바트)을 중심으로 기종·좌석과 신규·추진 노선을 함께 정리합니다.",
  "R": "중앙아시아",
- "focus": [],
- "focus_label": "중점",
- "focus_short": "중점",
- "focus_names": "",
+ "focus": [
+  "NQZ",
+  "FRU",
+  "ASB"
+ ],
+ "focus_label": "수도 공항",
+ "focus_short": "수도",
+ "focus_names": "수도 공항",
  "dest": [
-  {
-   "code": "ALA",
-   "name": "알마티",
-   "group": "카자흐스탄"
-  },
   {
    "code": "NQZ",
    "name": "아스타나",
+   "group": "카자흐스탄"
+  },
+  {
+   "code": "ALA",
+   "name": "알마티",
    "group": "카자흐스탄"
   },
   {
@@ -82,28 +86,46 @@
    "sub": "인천 출발 합계, 회/주"
   },
   {
-   "label": "카자흐스탄",
+   "label": "수도 공항 주간 직항",
+   "tag": true,
    "source": "week_groups",
    "field": "out",
    "row": 0,
-   "sub": "알마티·아스타나·심켄트, 회/주"
+   "sub": "아스타나·비슈케크·아시가바트, 회/주"
+  },
+  {
+   "label": "카자흐스탄",
+   "source": "week_groups",
+   "field": "out",
+   "row": 1,
+   "sub": "아스타나·알마티·심켄트, 회/주"
   },
   {
    "label": "키르기스스탄",
    "source": "week_groups",
    "field": "out",
-   "row": 1,
+   "row": 2,
    "sub": "비슈케크·오시, 회/주"
   },
   {
    "label": "투르크메니스탄",
    "source": "week_groups",
    "field": "out",
-   "row": 2,
+   "row": 3,
    "sub": "아시가바트, 회/주"
   }
  ],
  "week_groups": [
+  {
+   "label": "수도 공항 3곳",
+   "codes": [
+    "NQZ",
+    "FRU",
+    "ASB"
+   ],
+   "tag": true,
+   "show_airlines": true
+  },
   {
    "label": "카자흐스탄",
    "codes": [
@@ -111,7 +133,7 @@
     "NQZ",
     "CIT"
    ],
-   "show_airlines": true
+   "week_card": false
   },
   {
    "label": "키르기스스탄",
@@ -119,14 +141,14 @@
     "FRU",
     "OSS"
    ],
-   "show_airlines": true
+   "week_card": false
   },
   {
    "label": "투르크메니스탄",
    "codes": [
     "ASB"
    ],
-   "show_airlines": true
+   "week_card": false
   }
  ],
  "day_segments": [
@@ -160,5 +182,9 @@
  "winter_title": "신규·추진 노선",
  "winter_note": "공항 공식 스케줄에는 아직 없지만 뉴스로 확인된 노선입니다. 공식 스케줄에 올라오면 위 표로 옮깁니다. 각주 번호에 마우스를 올리면 근거 기사가 보입니다.",
  "focus_seats_sub": "",
- "how_note": "한국과 중앙아시아 3국(카자흐스탄·키르기스스탄·투르크메니스탄)을 오가는 항공 공급을 진단하는 데 쓰는 데이터를 모은 페이지입니다."
+ "how_note": "한국과 중앙아시아 3국(카자흐스탄·키르기스스탄·투르크메니스탄)을 오가는 항공 공급을 진단하는 데 쓰는 데이터를 모은 페이지입니다.",
+ "detail_hide_cols": [
+  "ph_arr",
+  "duration"
+ ]
 }

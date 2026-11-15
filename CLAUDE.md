@@ -8,6 +8,17 @@
 - **허브**: `philippines`, `central-asia`
 - **공개 저장소**: 개인 메일·전화번호를 넣지 않는다. 작성자 표기는 "AVIAREPS Korea"로 한다. 커밋 작성자는 GitHub noreply 주소를 쓴다(저장소 로컬 git config에 설정됨).
 
+## 나라 허브 기본 규칙 (2026-11-15 사용자 결정)
+- **중점 공항은 나라별 수도 공항이다.** hub.json의 `focus`에 넣는다. 예: 아스타나 NQZ, 비슈케크 FRU, 아시가바트 ASB.
+  - 수도가 아닌 공항도 지우지 않고 함께 둔다. 강조만 수도 공항에 한다.
+  - `dest`에서는 나라 안에서 수도를 맨 앞에 둔다.
+  - 필리핀 허브는 예외다. Aboitiz 제안용이라 세부·보홀이 중점이다.
+- **스케줄은 공항 공식 시간표만으로 만든다.** 대상 필드는 요일·횟수·시각·운항일이다.
+  - 예약시스템 원문이나 조사로 얻은 현지 도착 시각·비행시간은 넣지 않는다.
+  - `flights`에는 기종만 조사해 붙이고 `arr`·`duration`은 비운다. hub.json에 `detail_hide_cols: ["ph_arr", "duration"]`을 넣는다.
+  - `supply`(원문) 탭은 켜지 않는다.
+  - 기종·좌석(조사)과 신규·추진 노선(뉴스) 표는 스케줄이 아니므로 출처를 붙여 둔다.
+
 ## 파일 구조
 | 경로 | 내용 | 직접 수정 |
 |---|---|---|
@@ -32,7 +43,8 @@
 | `focus`, `focus_label`, `focus_short`, `focus_names` | 중점 공항(예: 세부·보홀). 없으면 `[]` |
 | `tabs` | 보일 탭. 원문 스케줄이 없으면 `supply` 탭을 뺀다 |
 | `overview_kpis` | 개요 카드 `{label, source, field, row, sub, tag}`. `source`는 `headline`(원문), `week_headline`, `week_groups` 중 하나 |
-| `week_groups`, `day_segments` | 주간 탭의 묶음 카드와 요일별 차트 묶음(중점 공항 또는 나라) |
+| `week_groups`, `day_segments` | 주간 탭의 묶음 카드와 요일별 차트 묶음(중점 공항 또는 나라). `week_card: false`인 묶음은 개요 카드에만 쓰고 주간 탭에는 안 나온다 |
+| `detail_hide_cols` | 항공편 상세에서 숨길 열(공식 시간표에 없는 `ph_arr`·`duration`) |
 | `pair_plus1` | 귀국편 짝을 편명+1로 먼저 찾는 항공사(필리핀항공 `PR`). 나머지는 편명−1 우선 |
 | `basis_label` | 기종 근거 이름(`원문` 또는 `조사`) |
 | `collect.kac` | 수집 때 같이 조회할 지방공항. `collect.airline_names`는 공항 사이트 표기를 바꿀 이름. `collect.season_note`는 주간 탭 설명 문구 |
@@ -64,7 +76,7 @@ git add -A && git commit && git push                # 1분쯤 뒤 Pages 반영
    - 표 행 수: 좌석 11, 코드 29, 상세 28
 
 ## 새 나라 추가 순서
-1. `hubs/<slug>/`를 만든다. `central-asia`를 복사해 `hub.json`의 dest·kr·라벨을 고친다.
+1. `hubs/<slug>/`를 만든다. `central-asia`를 복사해 `hub.json`의 dest·kr·라벨을 고친다. `focus`는 수도 공항으로 둔다(위 기본 규칙).
 2. `collect_week.py <slug>`를 실행한다. 공항 코드가 인천 시간표 공항 목록에 없으면 그 주 직항이 없다는 뜻이다.
 3. 기종·좌석·신규 노선을 조사해 `flights`·`seat_configs`·`winter_planned`·`glossary`에 넣는다. 출처 URL이 열리는지 확인한다.
 4. `text/` 조각을 쓰고 `datasets.json`을 채운다. 그다음 빌드·검증·배포한다.
@@ -73,4 +85,5 @@ git add -A && git commit && git push                # 1분쯤 뒤 Pages 반영
 - 2026-11-15 사용자 결정: 필리핀 허브와 같은 형식으로 나라별 항공정보를 정리한다. 첫 대상은 키르기스스탄·카자흐스탄·투르크메니스탄이다. 공개 배포 허용(고객사 자료 아님).
 - 2026-11-15 세 나라는 직항이 적어 나라별 3개 페이지 대신 `central-asia` 허브 하나로 묶었다. 공항 행에 나라를 같이 표시한다.
 - 2026-11-15 원문(예약시스템) 스케줄이 없는 허브는 `supply` 탭을 숨긴다. 기종은 운항기록 조사(`basis_label: 조사`)로 채운다.
+- 2026-11-15 사용자 결정: 중점 공항은 나라별 수도 공항, 스케줄은 공항 공식 시간표만. 중앙아시아 허브의 조사 기반 현지 도착 시각·비행시간을 지웠다.
 - 필리핀 허브의 기존 단독 사이트(`aboitiz-data-hub` 저장소)는 그대로 둔다. 앞으로 고치는 것은 이 저장소의 `philippines`이다.

@@ -224,6 +224,9 @@ document.querySelectorAll('.ab-tab').forEach((t) => { if (!TABS.includes(t.datas
 document.querySelectorAll('.ab-page').forEach((p) => { if (!TABS.includes(p.id)) p.remove(); });
 document.querySelectorAll('[data-go]').forEach((b) => { if (!TABS.includes(b.dataset.go)) (b.closest('.ab-card') || b).remove(); });
 if (!HUB.show_week_diff) { const b = document.getElementById('week-diff-box'); if (b) b.remove(); }
+// 항공편 상세에서 숨길 열 (예: 공식 시간표에 없는 현지 도착·비행시간)
+const DETAIL_HIDE = new Set(HUB.detail_hide_cols || []);
+DETAIL_HIDE.forEach((f) => { const th = document.querySelector(`#table-detail th[data-field="${f}"]`); if (th) th.remove(); });
 
 function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }
 function mark(source, field, opt = {}) {
@@ -244,6 +247,7 @@ if (ovk) (HUB.overview_kpis || []).forEach((k) => ovk.append(kpiCard(k)));
 // 주간 스케줄: 묶음 카드
 const wkRoutes = document.getElementById('week-kpi-routes');
 if (wkRoutes) WEEK_GROUPS.forEach((g, i) => {
+  if (g.week_card === false) return;   // 개요 카드에만 쓰는 묶음
   const c = el('div', 'ab-card' + (g.tag ? ' ab-proj' : ''));
   const l = el('div', 'ab-k-label', `${g.label} (한국 출발) `); if (g.tag) l.append(el('span', 'ab-tag', HUB.focus_label || '중점'));
   const s = el('div', 'ab-k-sub');
@@ -651,7 +655,7 @@ function drawDetail() {
   if (dtDir === 'IN') fKr.before(fPh); else fPh.before(fKr);
   const hrow = document.querySelector('#table-detail thead tr');
   pair.slice().reverse().forEach((f) => hrow.prepend(hrow.querySelector(`th[data-field="${f}"]`)));
-  const cols = [...pair, 'airline', 'flight', 'codeshare', 'days', 'weekly', 'kr_time', 'time_basis', 'ph_arr', 'duration', 'aircraft', 'aircraft_basis', 'seats', 'weekly_seats', 'terminal', 'dates', 'source', 'note'];
+  const cols = [...pair, 'airline', 'flight', 'codeshare', 'days', 'weekly', 'kr_time', 'time_basis', 'ph_arr', 'duration', 'aircraft', 'aircraft_basis', 'seats', 'weekly_seats', 'terminal', 'dates', 'source', 'note'].filter((c) => !DETAIL_HIDE.has(c));
   tbody.replaceChildren(...rows.map((r) => {
     const tr = document.createElement('tr'); tr.dataset.key = r.id;
     if (PROJECT.includes(r.ph_code)) tr.className = 'ab-row-proj';

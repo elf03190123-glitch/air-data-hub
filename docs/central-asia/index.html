@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../assets/hub.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script>window.DASH_SOURCES = ["flights", "glossary", "schedule_timeline", "schedule_week", "seat_configs", "week_meta", "winter_planned"];
-window.HUB = {"slug": "central-asia", "order": 2, "title": "중앙아시아 3국 항공 데이터 허브", "card_title": "중앙아시아 — 카자흐스탄·키르기스스탄·투르크메니스탄", "R": "중앙아시아", "focus": [], "focus_label": "중점", "focus_short": "중점", "focus_names": "", "dest": [{"code": "ALA", "name": "알마티", "group": "카자흐스탄"}, {"code": "NQZ", "name": "아스타나", "group": "카자흐스탄"}, {"code": "CIT", "name": "심켄트", "group": "카자흐스탄"}, {"code": "FRU", "name": "비슈케크", "group": "키르기스스탄"}, {"code": "OSS", "name": "오시", "group": "키르기스스탄"}, {"code": "ASB", "name": "아시가바트", "group": "투르크메니스탄"}], "kr": [{"code": "ICN", "name": "인천"}], "collect": {"kac": ["PUS", "CJJ", "TAE", "MWX", "YNY", "CJU", "GMP"], "season_note": "동계 스케줄(2026-10-25~2027-03-27) 기간입니다. 지방공항(김해·청주·대구·무안·양양·제주·김포)은 같은 기간 3국 노선이 없어 열에서 뺐습니다.", "airline_names": {"에어 아스타나": "에어아스타나", "투르크메니스탄": "투르크메니스탄항공", "스캇항공": "스캇항공"}}, "tabs": ["overview", "week", "detail", "seats", "seatmap", "glossary"], "overview_kpis": [{"label": "한국 → 중앙아시아 주간 직항", "source": "week_headline", "field": "out_total", "row": 0, "sub": "인천 출발 합계, 회/주"}, {"label": "카자흐스탄", "source": "week_groups", "field": "out", "row": 0, "sub": "알마티·아스타나·심켄트, 회/주"}, {"label": "키르기스스탄", "source": "week_groups", "field": "out", "row": 1, "sub": "비슈케크·오시, 회/주"}, {"label": "투르크메니스탄", "source": "week_groups", "field": "out", "row": 2, "sub": "아시가바트, 회/주"}], "week_groups": [{"label": "카자흐스탄", "codes": ["ALA", "NQZ", "CIT"], "show_airlines": true}, {"label": "키르기스스탄", "codes": ["FRU", "OSS"], "show_airlines": true}, {"label": "투르크메니스탄", "codes": ["ASB"], "show_airlines": true}], "day_segments": [{"name": "카자흐스탄", "codes": ["ALA", "NQZ", "CIT"]}, {"name": "키르기스스탄", "codes": ["FRU", "OSS"]}, {"name": "투르크메니스탄", "codes": ["ASB"]}], "day_seg_desc": "나라별로", "pair_plus1": [], "basis_label": "조사", "show_week_diff": false, "week_diff_title": "", "winter_title": "신규·추진 노선", "focus_seats_sub": ""};</script>
+window.HUB = {"slug": "central-asia", "order": 2, "title": "중앙아시아 3국 항공 데이터 허브", "card_title": "중앙아시아 — 카자흐스탄·키르기스스탄·투르크메니스탄", "R": "중앙아시아", "focus": ["NQZ", "FRU", "ASB"], "focus_label": "수도 공항", "focus_short": "수도", "focus_names": "수도 공항", "dest": [{"code": "NQZ", "name": "아스타나", "group": "카자흐스탄"}, {"code": "ALA", "name": "알마티", "group": "카자흐스탄"}, {"code": "CIT", "name": "심켄트", "group": "카자흐스탄"}, {"code": "FRU", "name": "비슈케크", "group": "키르기스스탄"}, {"code": "OSS", "name": "오시", "group": "키르기스스탄"}, {"code": "ASB", "name": "아시가바트", "group": "투르크메니스탄"}], "kr": [{"code": "ICN", "name": "인천"}], "collect": {"kac": ["PUS", "CJJ", "TAE", "MWX", "YNY", "CJU", "GMP"], "season_note": "동계 스케줄(2026-10-25~2027-03-27) 기간입니다. 지방공항(김해·청주·대구·무안·양양·제주·김포)은 같은 기간 3국 노선이 없어 열에서 뺐습니다.", "airline_names": {"에어 아스타나": "에어아스타나", "투르크메니스탄": "투르크메니스탄항공", "스캇항공": "스캇항공"}}, "tabs": ["overview", "week", "detail", "seats", "seatmap", "glossary"], "overview_kpis": [{"label": "한국 → 중앙아시아 주간 직항", "source": "week_headline", "field": "out_total", "row": 0, "sub": "인천 출발 합계, 회/주"}, {"label": "수도 공항 주간 직항", "tag": true, "source": "week_groups", "field": "out", "row": 0, "sub": "아스타나·비슈케크·아시가바트, 회/주"}, {"label": "카자흐스탄", "source": "week_groups", "field": "out", "row": 1, "sub": "아스타나·알마티·심켄트, 회/주"}, {"label": "키르기스스탄", "source": "week_groups", "field": "out", "row": 2, "sub": "비슈케크·오시, 회/주"}, {"label": "투르크메니스탄", "source": "week_groups", "field": "out", "row": 3, "sub": "아시가바트, 회/주"}], "week_groups": [{"label": "수도 공항 3곳", "codes": ["NQZ", "FRU", "ASB"], "tag": true, "show_airlines": true}, {"label": "카자흐스탄", "codes": ["ALA", "NQZ", "CIT"], "week_card": false}, {"label": "키르기스스탄", "codes": ["FRU", "OSS"], "week_card": false}, {"label": "투르크메니스탄", "codes": ["ASB"], "week_card": false}], "day_segments": [{"name": "카자흐스탄", "codes": ["ALA", "NQZ", "CIT"]}, {"name": "키르기스스탄", "codes": ["FRU", "OSS"]}, {"name": "투르크메니스탄", "codes": ["ASB"]}], "day_seg_desc": "나라별로", "pair_plus1": [], "basis_label": "조사", "show_week_diff": false, "week_diff_title": "", "winter_title": "신규·추진 노선", "focus_seats_sub": "", "detail_hide_cols": ["ph_arr", "duration"]};</script>
 <script src="../assets/dash-shim.js"></script>
 </head>
 <body>
@@ -21,7 +21,7 @@ window.HUB = {"slug": "central-asia", "order": 2, "title": "중앙아시아 3국
   <header>
     <p class="ab-crumb"><a href="../">← 항공 데이터 허브</a></p>
     <h1 class="ab-title" id="hub-title">중앙아시아 3국 항공 데이터 허브</h1>
-    <p class="ab-lead">카자흐스탄·키르기스스탄·투르크메니스탄과 한국을 오가는 직항을 공항 공식 시간표 기준으로 모으고, 기종·좌석과 신규·추진 노선을 함께 정리합니다.</p>
+    <p class="ab-lead">카자흐스탄·키르기스스탄·투르크메니스탄과 한국을 오가는 직항을 공항 공식 시간표로만 모으고, 나라별 수도 공항(아스타나·비슈케크·아시가바트)을 중심으로 기종·좌석과 신규·추진 노선을 함께 정리합니다.</p>
     <div class="ab-upd">
       <span class="ab-upd-meta">현재 주간 스케줄: <b><span data-source="week_meta" data-field="label" data-row="0">—</span></b> · <span data-source="week_meta" data-field="queried" data-row="0">—</span> 조회</span>
     </div>
@@ -46,10 +46,9 @@ window.HUB = {"slug": "central-asia", "order": 2, "title": "중앙아시아 3국
         <p class="ab-note">한국–중앙아시아 3국 항공 공급을 진단하는 데 필요한 데이터입니다. 자료가 들어오는 대로 각 항목을 이 허브에 탭으로 추가합니다.</p>
         <ul class="ab-list">
           <li><div>주간 운항 스케줄 — 한국↔중앙아시아 양방향<div class="ab-meta">공항 공식 자료 · <span data-source="week_meta" data-field="label" data-row="0">—</span> 실제 운항 · <span data-source="week_meta" data-field="queried" data-row="0">—</span> 조회</div></div><span><span class="ab-pill ab-done">정리 완료</span> <button class="ab-go" data-go="week">보기</button></span></li>
-          <li><div>항공편 상세 — 공항 공식 스케줄 + 투입 기종·좌석<div class="ab-meta">기종은 운항기록 조사 · 주간 공급석 포함</div></div><span><span class="ab-pill ab-done">정리 완료</span> <button class="ab-go" data-go="detail">보기</button></span></li>
+          <li><div>항공편 상세 — 공항 공식 스케줄 + 투입 기종·좌석<div class="ab-meta">스케줄은 공항 공식 시간표만 · 기종은 운항기록 조사 · 주간 공급석 포함</div></div><span><span class="ab-pill ab-done">정리 완료</span> <button class="ab-go" data-go="detail">보기</button></span></li>
           <li><div>신규·추진·계절 노선<div class="ab-meta">증편 예정, 하계 운항, 운휴, 제안 노선 · 근거 기사 포함</div></div><span><span class="ab-pill ab-done">정리 완료</span> <button class="ab-go" data-go="week">보기</button></span></li>
           <li><div>기종별 좌석 · 좌석 지도<div class="ab-meta">에어아스타나·스캇항공·투르크메니스탄항공</div></div><span><span class="ab-pill ab-done">정리 완료</span> <button class="ab-go" data-go="seats">보기</button></span></li>
-          <li><div>원문 스케줄(예약시스템 형식)<div class="ab-meta">현지 도착 시각·비행시간 보강용</div></div><span class="ab-pill">자료 대기</span></li>
           <li><div>나라별 한국인 출국·방한 통계<div class="ab-meta">카자흐스탄·키르기스스탄·투르크메니스탄 월별</div></div><span class="ab-pill">자료 대기</span></li>
           <li><div>경유 수요<div class="ab-meta">타슈켄트·이스탄불·두바이 등 경유 연결</div></div><span class="ab-pill">자료 대기</span></li>
         </ul>
@@ -63,7 +62,7 @@ window.HUB = {"slug": "central-asia", "order": 2, "title": "중앙아시아 3국
           <li><span class="ab-strong">내려받기</span> — 아래에서 원 데이터를 CSV(엑셀) 또는 JSON으로 받을 수 있습니다.</li>
         </ol>
         <ul class="ab-dl">
-          <li><span title="인천 출발 편마다 실제 투입 기종과 현지 도착 시각(확인된 것만)을 Trip.com 운항기록·AeroLOPA·AeroRoutes로 확인해 정리한 표. 2026-11-15 조사.">항공편별 기종(조사) <span class="ab-dl-m">· 5행 · 2026-11-15</span></span><span><a href="data/flights.csv" download>CSV</a><a href="data/flights.json">JSON</a></span></li>
+          <li><span title="인천 출발 편마다 실제 투입 기종을 Trip.com 운항기록·AeroLOPA·AeroRoutes로 확인해 붙인 표. 요일·횟수·출발 시각은 공항 공식 시간표 값. 2026-11-15 조사.">항공편별 기종(조사) <span class="ab-dl-m">· 5행 · 2026-11-15</span></span><span><a href="data/flights.csv" download>CSV</a><a href="data/flights.json">JSON</a></span></li>
           <li><span title="항공사·공항·기종 코드와 표기 규칙.">항공 코드 사전 <span class="ab-dl-m">· 25행 · 2026-11-15</span></span><span><a href="data/glossary.csv" download>CSV</a><a href="data/glossary.json">JSON</a></span></li>
           <li><span title="인천국제공항공사 여객 출·도착 시간표에서 기간 내 실제 운항을 날짜별로 받아 편별로 묶은 표. 지방공항 7곳(한국공항공사 국제선 운항스케줄)도 조회했으나 3국 노선 없음.">한국↔중앙아시아 주간 운항(공항 공식) <span class="ab-dl-m">· 10행 · 2026-11-15</span></span><span><a href="data/schedule_week.csv" download>CSV</a><a href="data/schedule_week.json">JSON</a></span></li>
           <li><span title="한국–중앙아시아 직항에 투입되는 항공사·기종별 좌석 수와 배치. AeroLOPA·seatmaps.com 기준.">기종별 좌석 구성 <span class="ab-dl-m">· 4행 · 2026-11-15</span></span><span><a href="data/seat_configs.csv" download>CSV</a><a href="data/seat_configs.json">JSON</a></span></li>
@@ -104,8 +103,8 @@ window.HUB = {"slug": "central-asia", "order": 2, "title": "중앙아시아 3국
 
     <div class="ab-card" id="card-airline" style="margin-bottom: var(--cds-gap-md);">
       <h3>항공사별 주간 운항</h3>
-      <p class="ab-note"> 노선 비중이 큰 항공사가 핵심 파트너 후보입니다.</p>
-      <div class="ab-legend"><span><span class="ab-sw" id="sw-proj"></span></span><span><span class="ab-sw" id="sw-other"></span>기타 중앙아시아</span></div>
+      <p class="ab-note">수도 공항 노선 비중이 큰 항공사가 핵심 파트너 후보입니다.</p>
+      <div class="ab-legend"><span><span class="ab-sw" id="sw-proj"></span>수도 공항</span><span><span class="ab-sw" id="sw-other"></span>기타 중앙아시아</span></div>
       <div class="ab-chart" id="chart-airline" data-source="by_airline"><div class="ab-box"></div><div class="ab-tip" hidden></div></div>
     </div>
 
@@ -206,6 +205,7 @@ window.HUB = {"slug": "central-asia", "order": 2, "title": "중앙아시아 3국
             <li><div>시각은 <span class="ab-strong">한국 공항 기준</span>입니다. 한국→중앙아시아는 한국 출발 시각, 중앙아시아→한국은 한국 도착 시각이며, 현지 출·도착 시각은 공항 자료에 없습니다.</div></li>
             <li><div>인천은 <span class="ab-strong">인천국제공항공사 여객 출·도착 시간표</span>(날짜별 실제 운항)로 <span data-source="week_meta" data-field="label" data-row="0">—</span>을 하루씩 받아 셌습니다. <span data-source="week_meta" data-field="queried" data-row="0">—</span> 조회.</div></li>
             <li><div>지방공항 7곳(김해·청주·대구·무안·양양·제주·김포)은 <span class="ab-strong">한국공항공사 국제선 운항스케줄</span>로 같은 기간을 조회했고, 3국 노선은 없었습니다.</div></li>
+            <li><div><span class="ab-strong">수도 공항</span>(아스타나·비슈케크·아시가바트)을 중점으로 표시했습니다. 표에서 왼쪽 굵은 선과 '수도' 표시가 붙은 행입니다.</div></li>
             <li><div>공동운항(코드셰어)은 실제 운항편 하나로 세고, 판매 편명은 '공동운항' 열에 적었습니다.</div></li>
             <li><div>키르기스스탄(비슈케크·오시)은 이번 주 직항이 없어 "–"로 나옵니다. 그동안 운항해 온 티웨이항공 인천–비슈케크는 아래 '신규·추진 노선'에 적었습니다.</div></li>
             <li><div><span data-source="week_meta" data-field="season_note" data-row="0">—</span></div></li>
@@ -221,7 +221,7 @@ window.HUB = {"slug": "central-asia", "order": 2, "title": "중앙아시아 3국
 
   <!-- 항공편 상세 (통합) -->
   <section class="ab-page" id="detail" hidden>
-    <p class="ab-lead">공항 공식 시간표(<span data-source="week_meta" data-field="label" data-row="0">—</span>)를 기준으로, 운항기록으로 확인한 투입 기종·현지 도착 시각·비행시간과 '기종별 좌석'의 좌석 수를 편명으로 합친 목록입니다.</p>
+    <p class="ab-lead">공항 공식 시간표(<span data-source="week_meta" data-field="label" data-row="0">—</span>)의 편별 운항에, 운항기록으로 확인한 투입 기종과 '기종별 좌석'의 좌석 수를 편명으로 붙인 목록입니다.</p>
     <div class="ab-kpis" style="margin-top: var(--cds-gap-md);">
       <div class="ab-card"><div class="ab-k-label">한국→중앙아시아 주간 운항</div>
         <div class="ab-num dash-skeleton" data-source="detail_headline" data-field="out_weekly" data-row="0">—</div>
@@ -235,7 +235,7 @@ window.HUB = {"slug": "central-asia", "order": 2, "title": "중앙아시아 3국
     </div>
     <div class="ab-card" id="card-detail">
       <h3>항공편 상세</h3>
-      <p class="ab-note">방향·현지 공항으로 거르거나 검색할 수 있고, 열 제목을 누르면 정렬됩니다. 한국 시각은 공항 공식 자료, 기종·현지 도착·비행시간은 조사(Trip.com 운항기록·AeroLOPA·AeroRoutes) 기준이며 확인되지 않은 칸은 비워 두었습니다. 귀국편 기종은 같은 노선의 짝편(편명−1 또는 +1) 기종을 따랐습니다.</p>
+      <p class="ab-note">방향·현지 공항으로 거르거나 검색할 수 있고, 열 제목을 누르면 정렬됩니다. 요일·횟수·시각은 모두 공항 공식 시간표 값이며(한국 공항 기준 시각), 공식 시간표에 없는 현지 도착 시각·비행시간은 넣지 않았습니다. 기종만 운항기록 조사(Trip.com·AeroLOPA·AeroRoutes)로 붙였고, 귀국편 기종은 같은 노선의 짝편(편명−1 또는 +1) 기종을 따랐습니다. 굵게 표시된 행은 수도 공항 노선입니다.</p>
       <div class="ab-filters">
         <div class="ab-frow"><span class="ab-flabel">방향</span><span id="dt-chip-dir" role="group" aria-label="방향"></span></div>
         <div class="ab-frow" id="frow-kr"><span class="ab-flabel">한국 공항</span><span id="dt-chip-kr" role="group" aria-label="한국 공항"></span></div>
