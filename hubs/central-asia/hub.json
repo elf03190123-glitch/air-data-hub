@@ -75,6 +75,7 @@
   "days",
   "routes",
   "detail",
+  "supply",
   "seats",
   "seatmap",
   "glossary"
@@ -188,5 +189,8 @@
  "detail_hide_cols": [
   "ph_arr",
   "duration"
- ]
+ ],
+ "supply_tab_label": "항공 공급",
+ "supply_issues_title": "편별 참고 사항",
+ "supply_moved_note": "편별 목록(기종·좌석·주간 공급석 포함)은 '항공편 상세' 탭에 있습니다."
 }

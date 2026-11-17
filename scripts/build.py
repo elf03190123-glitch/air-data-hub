@@ -36,6 +36,9 @@ D3_URL = "https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"
 FONTS_URL = ("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600"
              "&family=Noto+Serif+KR:wght@400;600&display=swap")
 ASSETS = ["tokens.css", "hub.css", "dash-shim.js", "hub.js"]
+# hub.json 에 없을 때 쓰는 자리표시 기본값
+DEFAULTS = {"supply_tab_label": "항공 공급 (원문)", "supply_issues_title": "확인이 필요한 항목",
+            "supply_moved_note": "항공편별 상세(기종·좌석·현지 도착 시각 포함)는 공항 공식 스케줄과 합쳐 '항공편 상세' 탭에 정리했습니다."}
 
 # 공개 사이트에 나오면 안 되는 것
 # - 메일 주소: 특정 주소를 여기 적으면 그 자체가 공개되므로, 메일 주소 형식이면 모두 막는다 (연락처는 "AVIAREPS Korea"로만 표기)
@@ -113,7 +116,7 @@ def render_hub(hub: dict) -> str:
         k = m.group(1)
         if k == "downloads":
             return downloads
-        v = cfg.get(k, "")
+        v = cfg.get(k, DEFAULTS.get(k, ""))
         return v if isinstance(v, str) else str(v)
 
     page = re.sub(r"\{\{>\s*(\w+)\s*\}\}", frag, page)

@@ -258,7 +258,11 @@ if (wkRoutes) WEEK_GROUPS.forEach((g, i) => {
 });
 // 원문 탭: 목적지 카드와 범례
 const kpiDest = document.getElementById('kpi-dest');
-if (kpiDest) ORDER.forEach((code) => {
+function ensureDestCards() {
+  if (!kpiDest || kpiDest.children.length) return;
+  const fd = dash.data('flights'); if (fd.status !== 'ok') return;
+  const present = new Set(fd.data.map((f) => f.dest_code));
+  ORDER.filter((code) => present.has(code)).forEach((code) => {
   const w = `dest_code=${code}`; const proj = PROJECT.includes(code);
   const c = el('div', 'ab-card' + (proj ? ' ab-proj' : '')); c.id = `kpi-${lc(code)}`;
   const l = el('div', 'ab-k-label', `${DNAME.get(code) || code} `); if (proj) l.append(el('span', 'ab-tag', HUB.focus_label || '중점'));
@@ -268,7 +272,8 @@ if (kpiDest) ORDER.forEach((code) => {
   const s3 = el('div', 'ab-k-warn', '요일 미확인 '); s3.append(mark('by_dest', 'unconfirmed', { where: w }), document.createTextNode('편'));
   c.append(l, mark('by_dest', 'total', { cls: 'ab-num dash-skeleton', where: w }), s1, s2, s3);
   kpiDest.append(c);
-});
+  });
+}
 const destLegend = document.getElementById('dest-legend');
 if (destLegend) SUPPLY_KR.forEach((k, i) => { const s = el('span'); const sw = el('span', 'ab-sw'); sw.style.background = dash.colors[i]; s.append(sw, document.createTextNode(`${k.name} 출발`)); destLegend.append(s); });
 const swProj = document.getElementById('sw-proj'); if (swProj) swProj.style.background = dash.colors[0];
@@ -412,7 +417,7 @@ function drawTime() {
       const cy = y(c) + y.bandwidth() / 2 + ((i % 3) - 1) * 6;
       svg.append('circle').attr('cx', x(hr)).attr('cy', cy).attr('r', rad)
         .attr('fill', known ? col : 'none').attr('stroke', col).attr('stroke-width', known ? 1 : 1.5).attr('fill-opacity', 0.75)
-        .on('mousemove', (event) => showTip(ctx, event, `${r.airline} ${r.flight}`, [`${r.origin} ${r.dep} 출발 → ${r.arr} 도착`, known ? `${r.days} · 주 ${r.weekly}회` : '운항 요일 확인 필요']))
+        .on('mousemove', (event) => showTip(ctx, event, `${r.airline} ${r.flight}`, [r.arr ? `${r.origin} ${r.dep} 출발 → ${r.arr} 도착` : `${r.origin} ${r.dep} 출발 (한국 시각)`, known ? `${r.days} · 주 ${r.weekly}회` : '운항 요일 확인 필요']))
         .on('mouseleave', () => { tip.hidden = true; });
     });
   });
@@ -425,6 +430,9 @@ function drawScheduleTimeline() {
   if (d.status === 'error' || d.status === 'connect' || d.status === 'declined') { container.innerHTML = '<div class="ab-fail"><span class="ab-dot"></span>불러오지 못했습니다</div>'; return; }
   if (d.status !== 'ok') { return; }
   const rows = d.data;
+  const card = document.getElementById('card-schedule');
+  if (card) card.hidden = !rows.length;
+  if (!rows.length) { container.replaceChildren(); return; }
   const destRows = {};
   rows.forEach((r) => {
     if (!destRows[r.dest_code]) destRows[r.dest_code] = [];
@@ -936,6 +944,7 @@ function drawWinter() {
 function drawWeek() { drawWeekMatrix(); drawWeekDiff(); }
 
 function draw() {
+  if (current === 'supply') ensureDestCards();
   fillMarks();
   if (current === 'supply') { drawDest(); drawTime(); drawAirline(); drawScheduleTimeline(); drawIssues(); }
   if (current === 'week') drawWeek();

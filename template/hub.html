@@ -14,7 +14,7 @@
     <button class="ab-tab" role="tab" data-tab="days" id="tab-days">요일별 운항</button>
     <button class="ab-tab" role="tab" data-tab="routes" id="tab-routes">신규·추진 노선</button>
     <button class="ab-tab" role="tab" data-tab="detail" id="tab-detail">항공편 상세</button>
-    <button class="ab-tab" role="tab" data-tab="supply" id="tab-supply">항공 공급 (원문)</button>
+    <button class="ab-tab" role="tab" data-tab="supply" id="tab-supply">{{supply_tab_label}}</button>
     <button class="ab-tab" role="tab" data-tab="seats" id="tab-seats">기종별 좌석</button>
     <button class="ab-tab" role="tab" data-tab="seatmap" id="tab-seatmap">좌석 지도</button>
     <button class="ab-tab" role="tab" data-tab="glossary" id="tab-glossary">코드 사전</button>
@@ -79,7 +79,7 @@
     </div>
 
     <div class="ab-card" id="card-flights-moved" style="margin-bottom: var(--cds-gap-md);">
-      <p class="ab-note" style="margin:0;">항공편별 상세(기종·좌석·현지 도착 시각 포함)는 공항 공식 스케줄과 합쳐 '항공편 상세' 탭에 정리했습니다. <button class="ab-go" data-go="detail">항공편 상세 보기</button></p>
+      <p class="ab-note" style="margin:0;">{{supply_moved_note}} <button class="ab-go" data-go="detail">항공편 상세 보기</button></p>
     </div>
     <div class="ab-card ab-foot" id="card-reading">
       <div class="ab-foot-grid">
@@ -88,7 +88,7 @@
           {{> supply_notes}}
         </div>
         <div>
-          <h3>확인이 필요한 항목</h3>
+          <h3>{{supply_issues_title}}</h3>
           <ul class="ab-list ab-issues" id="data-issues" data-source="flights"></ul>
         </div>
       </div>
