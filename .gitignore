@@ -1,3 +1,4 @@
 __pycache__/
 *.pyc
 hubs/*/collect_last.txt
+hubs/*/make_flights_last.txt

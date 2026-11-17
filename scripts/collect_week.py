@@ -117,16 +117,35 @@ def build_rows(recs: list[dict], cfg: dict, all_days: list[dt.date]) -> list[dic
     R = cfg["R"]
     focus = set(cfg.get("focus") or [])
     aname = cfg.get("collect", {}).get("airline_names", {})  # 공항 사이트 표기 → 페이지 표기
-    groups: dict[tuple, dict] = {}
+    # 같은 편이 날에 따라 시각만 조금 다르면 한 줄로 합친다 (많은 쪽 시각을 대표로, 나머지는 비고에).
+    # 같은 날 같은 편명이 두 번 뜨면(시각이 다른 별개 운항) 시각별로 따로 둔다.
+    by_flight: dict[tuple, list[dict]] = {}
     for r in recs:
-        k = (r["dir"], r["kr_code"], r["ph_code"], r["flight"], r["time"])
-        g = groups.setdefault(k, {**r, "dates": set(), "codes": set()})
-        g["dates"].add(r["date"])
-        g["codes"].update(c for c in r["codeshare"].split(", ") if c)
+        by_flight.setdefault((r["dir"], r["kr_code"], r["ph_code"], r["flight"]), []).append(r)
+    groups: dict[tuple, dict] = {}
+    for fk, rs in by_flight.items():
+        per_day: dict = {}
+        for r in rs:
+            per_day.setdefault(r["date"], set()).add(r["time"])
+        split = any(len(ts) > 1 for ts in per_day.values())
+        for r in rs:
+            k = fk + ((r["time"],) if split else ("",))
+            g = groups.setdefault(k, {**r, "dates": set(), "codes": set(), "times": {}})
+            g["dates"].add(r["date"])
+            g["times"][r["date"]] = r["time"]
+            g["codes"].update(c for c in r["codeshare"].split(", ") if c)
     rows = []
-    for (d, kr, ph, fl, tm), g in groups.items():
+    for (d, kr, ph, fl, _), g in groups.items():
         dates = sorted(g["dates"])
+        counts: dict[str, int] = {}
+        for t in g["times"].values():
+            counts[t] = counts.get(t, 0) + 1
+        tm = sorted(counts, key=lambda t: (-counts[t], t))[0]
         notes = []
+        others = sorted({(x, t) for x, t in g["times"].items() if t != tm})
+        if others:
+            word = "출발" if d == "OUT" else "도착"
+            notes.append("다른 시각: " + ", ".join(f"{DOW[x.weekday()]}({x.month}/{x.day}) {t} {word}" for x, t in others))
         if g["via"]:
             notes.append(f"경유: {'·'.join(g['via'])}")
         rows.append({

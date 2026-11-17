@@ -1,0 +1,257 @@
+[
+ {
+  "code": "KE",
+  "category": "항공사",
+  "meaning": "대한항공 (2026-12-17 아시아나 통합)"
+ },
+ {
+  "code": "OZ",
+  "category": "항공사",
+  "meaning": "아시아나항공 (12/17부터 KE 편명)"
+ },
+ {
+  "code": "YP",
+  "category": "항공사",
+  "meaning": "에어프레미아"
+ },
+ {
+  "code": "TW",
+  "category": "항공사",
+  "meaning": "트리니티항공 (옛 티웨이항공, 코드 유지)"
+ },
+ {
+  "code": "UA",
+  "category": "항공사",
+  "meaning": "유나이티드항공"
+ },
+ {
+  "code": "DL",
+  "category": "항공사",
+  "meaning": "델타항공"
+ },
+ {
+  "code": "AS",
+  "category": "항공사",
+  "meaning": "알래스카항공 (하와이안항공과 통합)"
+ },
+ {
+  "code": "AA",
+  "category": "항공사",
+  "meaning": "아메리칸항공"
+ },
+ {
+  "code": "AC",
+  "category": "항공사",
+  "meaning": "에어캐나다"
+ },
+ {
+  "code": "AM",
+  "category": "항공사",
+  "meaning": "아에로멕시코"
+ },
+ {
+  "code": "WS",
+  "category": "항공사",
+  "meaning": "웨스트젯 (대한항공 공동운항)"
+ },
+ {
+  "code": "SQ",
+  "category": "항공사",
+  "meaning": "싱가포르항공 (공동운항)"
+ },
+ {
+  "code": "TG",
+  "category": "항공사",
+  "meaning": "타이항공 (공동운항)"
+ },
+ {
+  "code": "LA",
+  "category": "항공사",
+  "meaning": "라탐항공 (공동운항)"
+ },
+ {
+  "code": "MH",
+  "category": "항공사",
+  "meaning": "말레이시아항공 (공동운항)"
+ },
+ {
+  "code": "AL",
+  "category": "항공사",
+  "meaning": "확인 불가 — 공항 시간표에 KE012 공동운항 편명(AL8425)으로 한 번 나옴. 라탐(LA)의 표기 오류로 보임"
+ },
+ {
+  "code": "ICN",
+  "category": "공항",
+  "meaning": "인천국제공항"
+ },
+ {
+  "code": "IAD",
+  "category": "공항",
+  "meaning": "워싱턴 덜레스 국제공항 (미국 수도)"
+ },
+ {
+  "code": "LAX",
+  "category": "공항",
+  "meaning": "로스앤젤레스 국제공항"
+ },
+ {
+  "code": "SFO",
+  "category": "공항",
+  "meaning": "샌프란시스코 국제공항"
+ },
+ {
+  "code": "SEA",
+  "category": "공항",
+  "meaning": "시애틀-타코마 국제공항"
+ },
+ {
+  "code": "LAS",
+  "category": "공항",
+  "meaning": "라스베이거스 해리 리드 국제공항"
+ },
+ {
+  "code": "SLC",
+  "category": "공항",
+  "meaning": "솔트레이크시티 국제공항"
+ },
+ {
+  "code": "HNL",
+  "category": "공항",
+  "meaning": "호놀룰루 국제공항"
+ },
+ {
+  "code": "DFW",
+  "category": "공항",
+  "meaning": "댈러스-포트워스 국제공항"
+ },
+ {
+  "code": "ORD",
+  "category": "공항",
+  "meaning": "시카고 오헤어 국제공항"
+ },
+ {
+  "code": "MSP",
+  "category": "공항",
+  "meaning": "미니애폴리스-세인트폴 국제공항"
+ },
+ {
+  "code": "DTW",
+  "category": "공항",
+  "meaning": "디트로이트 메트로폴리탄 공항"
+ },
+ {
+  "code": "ATL",
+  "category": "공항",
+  "meaning": "애틀랜타 하츠필드-잭슨 국제공항"
+ },
+ {
+  "code": "JFK",
+  "category": "공항",
+  "meaning": "뉴욕 존 F. 케네디 국제공항"
+ },
+ {
+  "code": "EWR",
+  "category": "공항",
+  "meaning": "뉴어크 리버티 국제공항 (뉴욕권)"
+ },
+ {
+  "code": "BOS",
+  "category": "공항",
+  "meaning": "보스턴 로건 국제공항"
+ },
+ {
+  "code": "YOW",
+  "category": "공항",
+  "meaning": "오타와 국제공항 (캐나다 수도, 한국 직항 없음)"
+ },
+ {
+  "code": "YVR",
+  "category": "공항",
+  "meaning": "밴쿠버 국제공항"
+ },
+ {
+  "code": "YYC",
+  "category": "공항",
+  "meaning": "캘거리 국제공항"
+ },
+ {
+  "code": "YYZ",
+  "category": "공항",
+  "meaning": "토론토 피어슨 국제공항"
+ },
+ {
+  "code": "YUL",
+  "category": "공항",
+  "meaning": "몬트리올 트뤼도 국제공항"
+ },
+ {
+  "code": "MEX",
+  "category": "공항",
+  "meaning": "멕시코시티 국제공항 (멕시코 수도)"
+ },
+ {
+  "code": "MTY",
+  "category": "공항",
+  "meaning": "몬테레이 국제공항"
+ },
+ {
+  "code": "77W",
+  "category": "기종",
+  "meaning": "B777-300ER"
+ },
+ {
+  "code": "772",
+  "category": "기종",
+  "meaning": "B777-200ER (유나이티드 표기 77E)"
+ },
+ {
+  "code": "388",
+  "category": "기종",
+  "meaning": "A380-800"
+ },
+ {
+  "code": "74H",
+  "category": "기종",
+  "meaning": "B747-8I"
+ },
+ {
+  "code": "781",
+  "category": "기종",
+  "meaning": "B787-10 (운항기록 표기 B78X)"
+ },
+ {
+  "code": "789",
+  "category": "기종",
+  "meaning": "B787-9"
+ },
+ {
+  "code": "788",
+  "category": "기종",
+  "meaning": "B787-8"
+ },
+ {
+  "code": "359",
+  "category": "기종",
+  "meaning": "A350-900 (델타 고급 버전 35H)"
+ },
+ {
+  "code": "333",
+  "category": "기종",
+  "meaning": "A330-300"
+ },
+ {
+  "code": "(+1)",
+  "category": "표기 규칙",
+  "meaning": "다음 날 도착"
+ },
+ {
+  "code": "공동운항",
+  "category": "표기 규칙",
+  "meaning": "다른 항공사가 자기 편명으로 좌석을 파는 편. 실제 운항편 하나로 센다"
+ },
+ {
+  "code": "프리미엄 이코노미",
+  "category": "표기 규칙",
+  "meaning": "비즈니스와 일반석 사이 별도 객실. 다리 공간만 넓은 일반석(이코노미 플러스·컴포트+ 등)은 일반석으로 셈"
+ }
+]

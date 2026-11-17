@@ -1,0 +1,300 @@
+{
+ "slug": "americas",
+ "order": 3,
+ "title": "미주 항공 데이터 허브",
+ "card_title": "미주 — 미국·캐나다·멕시코",
+ "card_desc": "한국↔미주 직항의 주간 운항(공항 공식 시간표), 항공편 상세, 기종별 좌석, 신규·추진 노선. 수도 공항 중점.",
+ "lead": "한국과 미국·캐나다·멕시코를 오가는 직항을 공항 공식 시간표로만 모으고, 나라별 수도 공항(워싱턴·오타와·멕시코시티)을 중심으로 기종·좌석과 신규·추진 노선을 함께 정리합니다.",
+ "R": "미주",
+ "focus": [
+  "IAD",
+  "YOW",
+  "MEX"
+ ],
+ "focus_label": "수도 공항",
+ "focus_short": "수도",
+ "focus_names": "수도 공항",
+ "dest": [
+  {
+   "code": "IAD",
+   "name": "워싱턴(덜레스)",
+   "group": "미국"
+  },
+  {
+   "code": "LAX",
+   "name": "로스앤젤레스",
+   "group": "미국"
+  },
+  {
+   "code": "SFO",
+   "name": "샌프란시스코",
+   "group": "미국"
+  },
+  {
+   "code": "SEA",
+   "name": "시애틀",
+   "group": "미국"
+  },
+  {
+   "code": "LAS",
+   "name": "라스베이거스",
+   "group": "미국"
+  },
+  {
+   "code": "SLC",
+   "name": "솔트레이크시티",
+   "group": "미국"
+  },
+  {
+   "code": "HNL",
+   "name": "호놀룰루",
+   "group": "미국"
+  },
+  {
+   "code": "DFW",
+   "name": "댈러스/포트워스",
+   "group": "미국"
+  },
+  {
+   "code": "ORD",
+   "name": "시카고(오헤어)",
+   "group": "미국"
+  },
+  {
+   "code": "MSP",
+   "name": "미니애폴리스",
+   "group": "미국"
+  },
+  {
+   "code": "DTW",
+   "name": "디트로이트",
+   "group": "미국"
+  },
+  {
+   "code": "ATL",
+   "name": "애틀랜타",
+   "group": "미국"
+  },
+  {
+   "code": "JFK",
+   "name": "뉴욕(JFK)",
+   "group": "미국"
+  },
+  {
+   "code": "EWR",
+   "name": "뉴어크",
+   "group": "미국"
+  },
+  {
+   "code": "BOS",
+   "name": "보스턴",
+   "group": "미국"
+  },
+  {
+   "code": "YOW",
+   "name": "오타와",
+   "group": "캐나다"
+  },
+  {
+   "code": "YVR",
+   "name": "밴쿠버",
+   "group": "캐나다"
+  },
+  {
+   "code": "YYC",
+   "name": "캘거리",
+   "group": "캐나다"
+  },
+  {
+   "code": "YYZ",
+   "name": "토론토",
+   "group": "캐나다"
+  },
+  {
+   "code": "YUL",
+   "name": "몬트리올",
+   "group": "캐나다"
+  },
+  {
+   "code": "MEX",
+   "name": "멕시코시티",
+   "group": "멕시코"
+  },
+  {
+   "code": "MTY",
+   "name": "몬테레이",
+   "group": "멕시코"
+  }
+ ],
+ "kr": [
+  {
+   "code": "ICN",
+   "name": "인천"
+  }
+ ],
+ "collect": {
+  "kac": [
+   "PUS",
+   "CJJ",
+   "TAE",
+   "MWX",
+   "YNY",
+   "CJU",
+   "GMP"
+  ],
+  "airline_names": {
+   "알래스카 항공": "알래스카항공"
+  },
+  "season_note": "동계 스케줄(2026-10-25~2027-03-27) 기간입니다. 지방공항(김해·청주·대구·무안·양양·제주·김포)도 같은 기간을 조회했습니다."
+ },
+ "tabs": [
+  "overview",
+  "week",
+  "detail",
+  "seats",
+  "seatmap",
+  "glossary"
+ ],
+ "overview_kpis": [
+  {
+   "label": "한국 → 미주 주간 직항",
+   "source": "week_headline",
+   "field": "out_total",
+   "row": 0,
+   "sub": "한국 출발 합계, 회/주"
+  },
+  {
+   "label": "수도 공항 주간 직항",
+   "tag": true,
+   "source": "week_groups",
+   "field": "out",
+   "row": 0,
+   "sub": "워싱턴·오타와·멕시코시티, 회/주"
+  },
+  {
+   "label": "미국",
+   "source": "week_groups",
+   "field": "out",
+   "row": 1,
+   "sub": "15개 공항, 회/주"
+  },
+  {
+   "label": "캐나다",
+   "source": "week_groups",
+   "field": "out",
+   "row": 2,
+   "sub": "밴쿠버·토론토 (캘거리·몬트리올은 하계), 회/주"
+  },
+  {
+   "label": "멕시코",
+   "source": "week_groups",
+   "field": "out",
+   "row": 3,
+   "sub": "멕시코시티 (귀국편은 몬테레이 경유), 회/주"
+  }
+ ],
+ "week_groups": [
+  {
+   "label": "수도 공항 3곳",
+   "codes": [
+    "IAD",
+    "YOW",
+    "MEX"
+   ],
+   "tag": true,
+   "show_airlines": true
+  },
+  {
+   "label": "미국",
+   "codes": [
+    "IAD",
+    "LAX",
+    "SFO",
+    "SEA",
+    "LAS",
+    "SLC",
+    "HNL",
+    "DFW",
+    "ORD",
+    "MSP",
+    "DTW",
+    "ATL",
+    "JFK",
+    "EWR",
+    "BOS"
+   ],
+   "week_card": false
+  },
+  {
+   "label": "캐나다",
+   "codes": [
+    "YOW",
+    "YVR",
+    "YYC",
+    "YYZ",
+    "YUL"
+   ],
+   "week_card": false
+  },
+  {
+   "label": "멕시코",
+   "codes": [
+    "MEX",
+    "MTY"
+   ],
+   "week_card": false
+  }
+ ],
+ "day_segments": [
+  {
+   "name": "미국",
+   "codes": [
+    "IAD",
+    "LAX",
+    "SFO",
+    "SEA",
+    "LAS",
+    "SLC",
+    "HNL",
+    "DFW",
+    "ORD",
+    "MSP",
+    "DTW",
+    "ATL",
+    "JFK",
+    "EWR",
+    "BOS"
+   ]
+  },
+  {
+   "name": "캐나다",
+   "codes": [
+    "YOW",
+    "YVR",
+    "YYC",
+    "YYZ",
+    "YUL"
+   ]
+  },
+  {
+   "name": "멕시코",
+   "codes": [
+    "MEX",
+    "MTY"
+   ]
+  }
+ ],
+ "day_seg_desc": "나라별로",
+ "detail_hide_cols": [
+  "ph_arr",
+  "duration"
+ ],
+ "pair_plus1": [],
+ "basis_label": "조사",
+ "show_week_diff": false,
+ "week_diff_title": "",
+ "winter_title": "신규·추진 노선",
+ "winter_note": "공항 공식 스케줄에는 아직 없지만 뉴스로 확인된 노선입니다. 공식 스케줄에 올라오면 위 표로 옮깁니다. 각주 번호에 마우스를 올리면 근거 기사가 보입니다.",
+ "focus_seats_sub": "",
+ "how_note": "한국과 미주(미국·캐나다·멕시코)를 오가는 직항 공급을 진단하는 데 쓰는 데이터를 모은 페이지입니다."
+}

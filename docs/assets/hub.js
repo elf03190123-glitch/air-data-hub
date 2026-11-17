@@ -697,16 +697,24 @@ function drawDetail() {
 
 /* ===== 기종별 좌석 · 좌석 지도 ===== */
 const SEAT_CLS = [
-  { key: 'first', layout: 'first_layout', label: () => '일등석', color: () => dash.colors[3], pitch: 1.9 },
+  { key: 'first', layout: 'first_layout', label: (s) => s.first_name || '일등석', color: () => dash.colors[3], pitch: 1.9 },
   { key: 'business', layout: 'business_layout', label: (s) => s.business_name || '비즈니스', color: () => dash.colors[0], pitch: 1.6 },
+  { key: 'premium', layout: 'premium_layout', label: (s) => s.premium_name || '프리미엄 이코노미', color: () => dash.colors[1], pitch: 1.25 },
   { key: 'economy', layout: 'economy_layout', label: () => '이코노미', color: () => dash.colors[2], pitch: 1 },
 ];
+// 좌석 범례: 데이터에 있는 등급만 (프리미엄 이코노미가 없는 허브는 기존과 같음)
+function seatLegend(rows) {
+  const hasP = rows.some((s) => Number(s.premium) > 0);
+  return [['일등석', dash.colors[3]], ['비즈니스·프레스티지', dash.colors[0]]].concat(hasP ? [['프리미엄 이코노미', dash.colors[1]]] : []).concat([['이코노미', dash.colors[2]]]);
+}
 function drawSeatTable() {
   const tbody = document.querySelector('#table-seats tbody');
   const d = dash.data('seat_configs');
   if (d.status !== 'ok') { tbody.replaceChildren(); return; }
   const rt = dash.data('seat_routes');
   const rmap = new Map(rt.status === 'ok' ? rt.data.map((r) => [r.id, r]) : []);
+  const hasP = d.data.some((s) => Number(s.premium) > 0);
+  const pth = document.querySelector('#table-seats th[data-field="premium"]'); if (pth) pth.hidden = !hasP;
   tbody.replaceChildren(...d.data.map((s) => {
     const tr = document.createElement('tr'); tr.dataset.key = s.id;
     const r = rmap.get(s.id) || {};
@@ -715,6 +723,7 @@ function drawSeatTable() {
       [fmt(Number(s.total)), 'ab-num-c'],
       [fmt(Number(s.first)), Number(s.first) ? 'ab-num-c' : 'ab-num-c ab-zero'],
       [fmt(Number(s.business)), Number(s.business) ? 'ab-num-c' : 'ab-num-c ab-zero'],
+      ...(hasP ? [[fmt(Number(s.premium || 0)), Number(s.premium) ? 'ab-num-c' : 'ab-num-c ab-zero']] : []),
       [fmt(Number(s.economy)), 'ab-num-c'],
       [r.routes || '—', ''], [r.weekly === undefined ? '—' : `${r.weekly}회`, 'ab-num-c ab-nowrap'], [s.note || '', ''],
     ];
@@ -736,14 +745,17 @@ function drawSeatTable() {
 }
 function drawSeatMaps() {
   const lg = document.getElementById('seat-legend');
-  lg.replaceChildren(...[['일등석', dash.colors[3]], ['비즈니스·프레스티지', dash.colors[0]], ['이코노미', dash.colors[2]]].map(([n, c]) => {
+  const sd = dash.data('seat_configs');
+  lg.replaceChildren(...seatLegend(sd.status === 'ok' ? sd.data : []).map(([n, c]) => {
     const s = document.createElement('span'); const sw = document.createElement('span'); sw.className = 'ab-sw'; sw.style.background = c; s.append(sw, document.createTextNode(n)); return s;
   }));
   const ctx = prep('chart-seatmaps', 'seat_configs'); if (!ctx) return;
   const { box, rows } = ctx;
   box.replaceChildren();
   if (!rows.length) { emptyLine(box, '데이터가 없습니다'); return; }
-  rows.forEach((s) => buildSeatCard(s, box, ctx, 'seatmap-', TABS.includes('seats')));
+  // 카드를 모두 붙인 뒤 그림을 그린다 (첫 카드만 폭 0으로 작게 그려지던 문제)
+  const draws = rows.map((s) => buildSeatCard(s, box, ctx, 'seatmap-', TABS.includes('seats')));
+  draws.forEach((f) => f());
 }
 function buildSeatCard(s, box, ctx, idPrefix, withBack) {
   const card = document.createElement('div'); card.className = 'ab-seat-card'; card.id = `${idPrefix}${s.id}`;
@@ -787,6 +799,9 @@ function buildSeatCard(s, box, ctx, idPrefix, withBack) {
   if (ml.children.length || s.cargo_src) card.append(memo);
   card.append(foot);
   box.append(card);
+  return () => drawSeatSvg(s, svgWrap, cabins, ctx);
+}
+function drawSeatSvg(s, svgWrap, cabins, ctx) {
   // 좌석 개략도 (단위: 이코노미 좌석 1개 = 1)
   const aisle = 0.9, cabGap = 1.4, nose = 3, tail = 2;
   const across = (c) => c.per + (c.groups.length - 1) * aisle;
@@ -842,11 +857,11 @@ function drawSeatOne() {
   wrap.hidden = false; tip.hidden = true;
   document.getElementById('seat-one-title').textContent = `좌석 지도 · ${s.airline} ${s.aircraft}`;
   const lg = document.getElementById('seat-one-legend');
-  lg.replaceChildren(...[['일등석', dash.colors[3]], ['비즈니스·프레스티지', dash.colors[0]], ['이코노미', dash.colors[2]]].map(([n, c]) => {
+  lg.replaceChildren(...seatLegend(d.data).map(([n, c]) => {
     const e = document.createElement('span'); const sw = document.createElement('span'); sw.className = 'ab-sw'; sw.style.background = c; e.append(sw, document.createTextNode(n)); return e;
   }));
   box.replaceChildren();
-  buildSeatCard(s, box, { wrap: chart, box, tip, rows: d.data }, 'seatone-', false);
+  buildSeatCard(s, box, { wrap: chart, box, tip, rows: d.data }, 'seatone-', false)();
 }
 const seatClose = document.getElementById('seat-one-close');
 if (seatClose) seatClose.addEventListener('click', () => { seatSel = null; drawSeats(); });
