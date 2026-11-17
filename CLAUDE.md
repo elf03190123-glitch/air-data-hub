@@ -5,7 +5,7 @@
 ## 한눈에
 - **목적**: 관심 나라마다 한국과 오가는 직항을 같은 형식의 데이터 허브로 정리한다. 형식은 필리핀(세부·보홀) 허브를 따르고, 그 허브는 사용자가 claude.ai에서 직접 정리해 만든 것이다.
 - **배포**: GitHub 공개 저장소 `elf03190123-glitch/air-data-hub`. `main` 브랜치의 `docs/`를 GitHub Pages로 배포한다. 주소는 https://elf03190123-glitch.github.io/air-data-hub/
-- **허브**: `philippines`, `central-asia`, `americas`
+- **허브**: `philippines`, `central-asia`, `americas`, `europe`
 - **공개 저장소**: 개인 메일·전화번호를 넣지 않는다. 작성자 표기는 "AVIAREPS Korea"로 한다. 커밋 작성자는 GitHub noreply 주소를 쓴다(저장소 로컬 git config에 설정됨).
 
 ## 나라 허브 기본 규칙 (2026-11-15 사용자 결정)
@@ -30,7 +30,7 @@
 | `hubs/<slug>/datasets.json` | 데이터셋 제목·설명·갱신일(내려받기 목록에 나옴) | 직접 |
 | `hubs/<slug>/data/schedule_week.json`, `week_meta.json` | 주간 스케줄 | **`collect_week.py`로만** |
 | `hubs/<slug>/aircraft.json` | 편명 → 기종(조사). `aircraft` 값은 seat_configs의 `aircraft_label`과 글자까지 같아야 함 | 직접(출처 확인 후) |
-| `hubs/<slug>/data/flights.json` | 한국 출발편 기종표 | **`make_flights.py`로만** (aircraft.json이 있는 허브: americas). central-asia는 아직 직접 작성본 |
+| `hubs/<slug>/data/flights.json` | 한국 출발편 기종표 | **`make_flights.py`로만** (aircraft.json이 있는 허브: americas, europe). central-asia는 아직 직접 작성본 |
 | `hubs/<slug>/data/` 나머지(seat_configs, winter_planned, glossary, schedule_timeline) | 조사·원문 데이터 | 직접(출처 확인 후) |
 | `scripts/build.py` | hubs + template → `docs/` | 직접 |
 | `scripts/collect_week.py` | 공항 공식 시간표 수집 | 직접 |
@@ -65,7 +65,7 @@ git add -A && git commit && git push                # 1분쯤 뒤 Pages 반영
 - `make_flights.py`는 `hubs/<slug>/make_flights_last.txt`에 기종 없는 편·좌석표와 이름이 안 맞는 편을 적는다. 둘 다 0이어야 한다.
 - `collect_week.py`는 요약을 `hubs/<slug>/collect_last.txt`에 쓴다. 이 파일은 git에 올리지 않는다. 터미널이 cp949라 한글 출력은 이 파일로 확인한다.
 - **수집 출처**
-  - 인천: 인천국제공항공사 여객 출·도착 시간표 API. 오늘 기준 −13일~+6일만 조회된다. 실제 운항편은 `fnumber == masterflight`인 것이다.
+  - 인천: 인천국제공항공사 여객 출·도착 시간표 API. 오늘 기준 −13일~+6일만 조회된다. **자정 직후에는 +6일째 시간표가 아직 비어 있다.** 그래서 한 요일이 통째로 빠지면 `--start`로 하루 이상 당겨 다시 받는다(2026-11-18 유럽 수집 때 화요일이 빠짐). 실제 운항편은 `fnumber == masterflight`인 것이다.
   - 지방공항: 한국공항공사 `getFilghtSchInternational.do`(요일·적용 기간). 자세한 내용은 스크립트 머리말에 있다.
   - 수집 결과에 `kr`에 없는 한국 공항이 나오면 요약에 경고가 뜬다. 그러면 `kr`에 추가한다.
 
@@ -99,4 +99,9 @@ git add -A && git commit && git push                # 1분쯤 뒤 Pages 반영
 - 2026-11-17 에어프레미아 B787-9은 309~344석 버전이 섞여 편별 배정이 공개되지 않아 309석(대표 버전)으로 계산한다. 델타 A350은 주력 275석(35H), 아에로멕시코는 B787-9로 계산하고 비고에 적는다.
 - 2026-11-17 사용자 요청: '요일별 운항'과 '신규·추진 노선'을 주간 운항 스케줄 탭에서 빼 각각 별도 탭(`days`, `routes`)으로 만들었다(세 허브 공통).
 - 2026-11-18 사용자 요청: 필리핀에만 있던 항공 공급 탭을 중앙아시아·미주에도 넣었다(공식 시간표 기준, 시간대 차트 없음). 목적지 카드는 실제 운항 공항만 만든다.
+- 2026-11-18 사용자 요청으로 `europe` 추가.
+  - 범위: 인천 직항이 있는 14개국. 수도 공항 14곳 중 베를린 BER·앙카라 ESB는 직항이 없어 0회. 타슈켄트는 우즈베키스탄이라 제외.
+  - 개요 카드와 요일별 차트는 권역별(서유럽·남유럽·중·동유럽·북유럽·튀르키예)로 묶는다. 공항 행에는 나라를 표시한다.
+  - 좌석이 편마다 달라지는 경우는 주로 들어가는 버전으로 계산하고 비고에 적는다(LOT 787-8/9, 핀에어 A350 두 버전, 대한항공 777 A/B).
+- 2026-11-18 탭 주소(`#탭`)로 열 때 화면이 그 섹션 위치로 내려가던 문제를 고쳤다. `dash-shim.js`가 처음에 `#`을 떼어 두고, `hub.js`가 페이지 로딩이 끝난 뒤(load 이벤트) `#`을 다시 붙인다. 로딩 중에 붙이면 브라우저가 다시 내려간다.
 - 필리핀 허브의 기존 단독 사이트(`aboitiz-data-hub` 저장소)는 그대로 둔다. 앞으로 고치는 것은 이 저장소의 `philippines`이다.

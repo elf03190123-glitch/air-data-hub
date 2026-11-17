@@ -1,0 +1,352 @@
+{
+ "slug": "europe",
+ "order": 4,
+ "title": "유럽 항공 데이터 허브",
+ "card_title": "유럽 — 14개국 직항",
+ "card_desc": "한국↔유럽 직항의 주간 운항(공항 공식 시간표), 항공 공급, 항공편 상세, 기종별 좌석, 신규·추진 노선. 수도 공항 중점.",
+ "lead": "한국과 유럽 14개국을 오가는 직항을 공항 공식 시간표로만 모으고, 나라별 수도 공항을 중심으로 기종·좌석과 신규·추진 노선을 함께 정리합니다.",
+ "R": "유럽",
+ "focus": [
+  "LHR",
+  "CDG",
+  "BER",
+  "AMS",
+  "FCO",
+  "MAD",
+  "LIS",
+  "PRG",
+  "VIE",
+  "BUD",
+  "WAW",
+  "HEL",
+  "CPH",
+  "ESB"
+ ],
+ "focus_label": "수도 공항",
+ "focus_short": "수도",
+ "focus_names": "수도 공항",
+ "dest": [
+  {
+   "code": "LHR",
+   "name": "런던(히드로)",
+   "group": "영국"
+  },
+  {
+   "code": "CDG",
+   "name": "파리(샤를드골)",
+   "group": "프랑스"
+  },
+  {
+   "code": "BER",
+   "name": "베를린",
+   "group": "독일"
+  },
+  {
+   "code": "FRA",
+   "name": "프랑크푸르트",
+   "group": "독일"
+  },
+  {
+   "code": "MUC",
+   "name": "뮌헨",
+   "group": "독일"
+  },
+  {
+   "code": "AMS",
+   "name": "암스테르담",
+   "group": "네덜란드"
+  },
+  {
+   "code": "FCO",
+   "name": "로마",
+   "group": "이탈리아"
+  },
+  {
+   "code": "MXP",
+   "name": "밀라노",
+   "group": "이탈리아"
+  },
+  {
+   "code": "MAD",
+   "name": "마드리드",
+   "group": "스페인"
+  },
+  {
+   "code": "BCN",
+   "name": "바르셀로나",
+   "group": "스페인"
+  },
+  {
+   "code": "LIS",
+   "name": "리스본",
+   "group": "포르투갈"
+  },
+  {
+   "code": "PRG",
+   "name": "프라하",
+   "group": "체코"
+  },
+  {
+   "code": "VIE",
+   "name": "빈",
+   "group": "오스트리아"
+  },
+  {
+   "code": "BUD",
+   "name": "부다페스트",
+   "group": "헝가리"
+  },
+  {
+   "code": "WAW",
+   "name": "바르샤바",
+   "group": "폴란드"
+  },
+  {
+   "code": "WRO",
+   "name": "브로츠와프",
+   "group": "폴란드"
+  },
+  {
+   "code": "HEL",
+   "name": "헬싱키",
+   "group": "핀란드"
+  },
+  {
+   "code": "CPH",
+   "name": "코펜하겐",
+   "group": "덴마크"
+  },
+  {
+   "code": "ESB",
+   "name": "앙카라",
+   "group": "튀르키예"
+  },
+  {
+   "code": "IST",
+   "name": "이스탄불",
+   "group": "튀르키예"
+  }
+ ],
+ "kr": [
+  {
+   "code": "ICN",
+   "name": "인천"
+  }
+ ],
+ "collect": {
+  "kac": [
+   "PUS",
+   "CJJ",
+   "TAE",
+   "MWX",
+   "YNY",
+   "CJU",
+   "GMP"
+  ],
+  "airline_names": {
+   "에어 프랑스": "에어프랑스",
+   "루프트한자 독일항공": "루프트한자",
+   "버진 애틀랜틱 항공": "버진애틀랜틱"
+  },
+  "season_note": "동계 스케줄(2026-10-25~2027-03-27) 기간입니다. 지방공항(김해·청주·대구·무안·양양·제주·김포)도 같은 기간을 조회했습니다."
+ },
+ "tabs": [
+  "overview",
+  "week",
+  "days",
+  "routes",
+  "detail",
+  "supply",
+  "seats",
+  "seatmap",
+  "glossary"
+ ],
+ "supply_tab_label": "항공 공급",
+ "supply_issues_title": "편별 참고 사항",
+ "supply_moved_note": "편별 목록(기종·좌석·주간 공급석 포함)은 '항공편 상세' 탭에 있습니다.",
+ "overview_kpis": [
+  {
+   "label": "한국 → 유럽 주간 직항",
+   "source": "week_headline",
+   "field": "out_total",
+   "row": 0,
+   "sub": "한국 출발 합계, 회/주"
+  },
+  {
+   "label": "수도 공항 주간 직항",
+   "tag": true,
+   "source": "week_groups",
+   "field": "out",
+   "row": 0,
+   "sub": "14개국 수도 공항, 회/주"
+  },
+  {
+   "label": "서유럽",
+   "source": "week_groups",
+   "field": "out",
+   "row": 1,
+   "sub": "영국·프랑스·독일·네덜란드, 회/주"
+  },
+  {
+   "label": "남유럽",
+   "source": "week_groups",
+   "field": "out",
+   "row": 2,
+   "sub": "이탈리아·스페인·포르투갈, 회/주"
+  },
+  {
+   "label": "중·동유럽",
+   "source": "week_groups",
+   "field": "out",
+   "row": 3,
+   "sub": "체코·오스트리아·헝가리·폴란드, 회/주"
+  },
+  {
+   "label": "북유럽",
+   "source": "week_groups",
+   "field": "out",
+   "row": 4,
+   "sub": "핀란드·덴마크, 회/주"
+  },
+  {
+   "label": "튀르키예",
+   "source": "week_groups",
+   "field": "out",
+   "row": 5,
+   "sub": "튀르키예, 회/주"
+  }
+ ],
+ "week_groups": [
+  {
+   "label": "수도 공항",
+   "codes": [
+    "LHR",
+    "CDG",
+    "BER",
+    "AMS",
+    "FCO",
+    "MAD",
+    "LIS",
+    "PRG",
+    "VIE",
+    "BUD",
+    "WAW",
+    "HEL",
+    "CPH",
+    "ESB"
+   ],
+   "tag": true,
+   "show_airlines": true
+  },
+  {
+   "label": "서유럽",
+   "codes": [
+    "LHR",
+    "CDG",
+    "BER",
+    "FRA",
+    "MUC",
+    "AMS"
+   ],
+   "week_card": false
+  },
+  {
+   "label": "남유럽",
+   "codes": [
+    "FCO",
+    "MXP",
+    "MAD",
+    "BCN",
+    "LIS"
+   ],
+   "week_card": false
+  },
+  {
+   "label": "중·동유럽",
+   "codes": [
+    "PRG",
+    "VIE",
+    "BUD",
+    "WAW",
+    "WRO"
+   ],
+   "week_card": false
+  },
+  {
+   "label": "북유럽",
+   "codes": [
+    "HEL",
+    "CPH"
+   ],
+   "week_card": false
+  },
+  {
+   "label": "튀르키예",
+   "codes": [
+    "ESB",
+    "IST"
+   ],
+   "week_card": false
+  }
+ ],
+ "day_segments": [
+  {
+   "name": "서유럽",
+   "codes": [
+    "LHR",
+    "CDG",
+    "BER",
+    "FRA",
+    "MUC",
+    "AMS"
+   ]
+  },
+  {
+   "name": "남유럽",
+   "codes": [
+    "FCO",
+    "MXP",
+    "MAD",
+    "BCN",
+    "LIS"
+   ]
+  },
+  {
+   "name": "중·동유럽",
+   "codes": [
+    "PRG",
+    "VIE",
+    "BUD",
+    "WAW",
+    "WRO"
+   ]
+  },
+  {
+   "name": "북유럽",
+   "codes": [
+    "HEL",
+    "CPH"
+   ]
+  },
+  {
+   "name": "튀르키예",
+   "codes": [
+    "ESB",
+    "IST"
+   ]
+  }
+ ],
+ "day_seg_desc": "권역별로",
+ "detail_hide_cols": [
+  "ph_arr",
+  "duration"
+ ],
+ "pair_plus1": [],
+ "basis_label": "조사",
+ "show_week_diff": false,
+ "week_diff_title": "",
+ "winter_title": "신규·추진 노선",
+ "winter_note": "공항 공식 스케줄에는 아직 없거나 바뀔 예정인 노선입니다. 공식 스케줄에 올라오면 '주간 운항 스케줄' 탭으로 옮깁니다. 각주 번호에 마우스를 올리면 근거 기사가 보입니다.",
+ "focus_seats_sub": "",
+ "how_note": "한국과 유럽 14개국을 오가는 직항 공급을 진단하는 데 쓰는 데이터를 모은 페이지입니다."
+}

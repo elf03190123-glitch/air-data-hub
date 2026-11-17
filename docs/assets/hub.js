@@ -958,5 +958,7 @@ function draw() {
 
 const START = window.DASH_START_HASH || location.hash.slice(1);
 const startTab = TABS.includes(START) ? START : TABS[0];
-show(startTab, startTab === START);
+show(startTab, false);
+// #탭 은 페이지 로딩이 끝난 뒤 다시 붙인다 (로딩 중에 붙이면 브라우저가 그 섹션 위치로 내려감)
+if (startTab === START) window.addEventListener('load', () => setTimeout(() => dash.setLink(startTab), 0));
 dash.onData(draw);
