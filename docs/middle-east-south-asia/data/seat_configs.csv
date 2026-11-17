@@ -1,0 +1,9 @@
+﻿id,airline,airline_code,aircraft,aircraft_code,aircraft_label,size,total,first,business,premium,economy,first_layout,business_layout,premium_layout,economy_layout,first_name,business_name,premium_name,note,source_name,source_url,cargo_volume,cargo_uld,cargo_weight,cargo_src
+EY-351,에티하드항공,EY,A350-1000,351,A350-1000,대형,371,0,44,0,327,,1-2-1,,3-3-3,,Business Studio,,비즈니스는 문 달린 스위트. 일반석에 다리 공간 넓은 45석 포함,AeroLOPA · seatmaps.com,https://www.aerolopa.com/ey-351,,,,
+EY-789,에티하드항공,EY,B787-9,789,B787-9,대형,299,0,28,0,271,,1-2-1,,3-3-3,,Business Studio,,2026년 객실(편성 기준 추정). 일부 날 B787-10 투입,AeroLOPA,https://www.aerolopa.com/ey-789-4,,,,
+EK-388,에미레이트항공,EK,A380-800,388,A380-800,대형,517,14,76,0,427,1-2-1,1-2-1,,3-4-3,First Class Suite,Business Class,,"3클래스 버전(편성 기준 추정). 위층 일등석·비즈니스, 아래층 일반석 — 그림은 한 층으로 단순화",AeroLOPA · seatmaps.com,https://www.aerolopa.com/ek-388l,,,,
+EK-77W,에미레이트항공,EK,B777-300ER,77W,B777-300ER,대형,354,8,42,0,304,1-2-1,2-3-2,,3-4-3,First Class Suite,Business Class,,3클래스 버전(편성 기준 추정). 에미레이트 777-300ER은 버전이 여러 가지,AeroLOPA · seatmaps.com,https://www.aerolopa.com/ek-77wq,,,,
+QR-351,카타르항공,QR,A350-1000,351,A350-1000,대형,327,0,46,0,281,,1-2-1,,3-3-3,,Qsuite,,도하–인천 편의 98%가 이 버전,AeroLOPA · Qatar Airways,https://www.aerolopa.com/qr-351-1,,,,
+AI-788,에어인디아,AI,B787-8,788,B787-8,대형,259,0,18,0,241,,2-2-2,,3-3-3,,Business Class,,개조 전 기존 객실(편성 기준 추정). 일부 날 256석 버전,AeroLOPA · seatmaps.com,https://www.aerolopa.com/ai-788-2,,,,
+KE-789,대한항공,KE,B787-9,789,B787-9,대형,278,0,24,0,254,,2-2-2,,3-3-3,,프레스티지 슬리퍼,,주력 버전(델리 노선 95%). 일부 기체는 269석,AeroLOPA · seatcompare.ai,https://www.aerolopa.com/ke-789-2,,,,
+UL-333,스리랑카항공,UL,A330-300,333,A330-300,대형,297,0,28,0,269,,1-2-1,,2-4-2,,Business Class,,날에 따라 A330-200(260~270석: 비즈니스 18·일반 242~252)과 번갈아 운항,AeroLOPA · seatmaps.com,https://www.aerolopa.com/ul-333,,,,

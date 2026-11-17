@@ -1,0 +1,196 @@
+{
+ "slug": "middle-east-south-asia",
+ "order": 5,
+ "title": "중동·서남아시아 항공 데이터 허브",
+ "card_title": "중동·서남아시아 — 5개국 직항",
+ "card_desc": "한국↔중동(아랍에미리트·카타르)·서남아시아(인도·네팔·스리랑카) 직항의 주간 운항(공항 공식 시간표), 항공 공급, 기종별 좌석, 신규·추진 노선. 수도 공항 중점.",
+ "lead": "한국과 중동(아랍에미리트·카타르)·서남아시아(인도·네팔·스리랑카)를 오가는 직항을 공항 공식 시간표로만 모으고, 나라별 수도 공항을 중심으로 기종·좌석과 신규·추진 노선을 함께 정리합니다.",
+ "R": "중동·서남아",
+ "focus": [
+  "AUH",
+  "DOH",
+  "DEL",
+  "KTM",
+  "CMB"
+ ],
+ "focus_label": "수도 공항",
+ "focus_short": "수도",
+ "focus_names": "수도 공항",
+ "dest": [
+  {
+   "code": "AUH",
+   "name": "아부다비",
+   "group": "아랍에미리트"
+  },
+  {
+   "code": "DXB",
+   "name": "두바이",
+   "group": "아랍에미리트"
+  },
+  {
+   "code": "DOH",
+   "name": "도하",
+   "group": "카타르"
+  },
+  {
+   "code": "DEL",
+   "name": "델리",
+   "group": "인도"
+  },
+  {
+   "code": "KTM",
+   "name": "카트만두",
+   "group": "네팔"
+  },
+  {
+   "code": "CMB",
+   "name": "콜롬보",
+   "group": "스리랑카"
+  }
+ ],
+ "kr": [
+  {
+   "code": "ICN",
+   "name": "인천"
+  }
+ ],
+ "collect": {
+  "kac": [
+   "PUS",
+   "CJJ",
+   "TAE",
+   "MWX",
+   "YNY",
+   "CJU",
+   "GMP"
+  ],
+  "airline_names": {
+   "에티하드 항공": "에티하드항공",
+   "에어인디아 리미티드": "에어인디아"
+  },
+  "season_note": "동계 스케줄(2026-10-25~2027-03-27) 기간입니다. 지방공항(김해·청주·대구·무안·양양·제주·김포)도 같은 기간을 조회했습니다."
+ },
+ "tabs": [
+  "overview",
+  "week",
+  "days",
+  "routes",
+  "detail",
+  "supply",
+  "seats",
+  "seatmap",
+  "glossary"
+ ],
+ "supply_tab_label": "항공 공급",
+ "supply_issues_title": "편별 참고 사항",
+ "supply_moved_note": "편별 목록(기종·좌석·주간 공급석 포함)은 '항공편 상세' 탭에 있습니다.",
+ "overview_kpis": [
+  {
+   "label": "한국 → 중동·서남아 주간 직항",
+   "source": "week_headline",
+   "field": "out_total",
+   "row": 0,
+   "sub": "한국 출발 합계, 회/주"
+  },
+  {
+   "label": "수도 공항 주간 직항",
+   "tag": true,
+   "source": "week_groups",
+   "field": "out",
+   "row": 0,
+   "sub": "아부다비·도하·델리·카트만두·콜롬보, 회/주"
+  },
+  {
+   "label": "중동",
+   "source": "week_groups",
+   "field": "out",
+   "row": 1,
+   "sub": "아랍에미리트·카타르, 회/주"
+  },
+  {
+   "label": "서남아시아",
+   "source": "week_groups",
+   "field": "out",
+   "row": 2,
+   "sub": "인도·네팔·스리랑카, 회/주"
+  }
+ ],
+ "week_groups": [
+  {
+   "label": "수도 공항",
+   "codes": [
+    "AUH",
+    "DOH",
+    "DEL",
+    "KTM",
+    "CMB"
+   ],
+   "tag": true,
+   "show_airlines": true
+  },
+  {
+   "label": "중동",
+   "codes": [
+    "AUH",
+    "DXB",
+    "DOH"
+   ],
+   "week_card": false
+  },
+  {
+   "label": "서남아시아",
+   "codes": [
+    "DEL",
+    "KTM",
+    "CMB"
+   ],
+   "week_card": false
+  }
+ ],
+ "day_segments": [
+  {
+   "name": "아랍에미리트",
+   "codes": [
+    "AUH",
+    "DXB"
+   ]
+  },
+  {
+   "name": "카타르",
+   "codes": [
+    "DOH"
+   ]
+  },
+  {
+   "name": "인도",
+   "codes": [
+    "DEL"
+   ]
+  },
+  {
+   "name": "네팔",
+   "codes": [
+    "KTM"
+   ]
+  },
+  {
+   "name": "스리랑카",
+   "codes": [
+    "CMB"
+   ]
+  }
+ ],
+ "day_seg_desc": "나라별로",
+ "detail_hide_cols": [
+  "ph_arr",
+  "duration"
+ ],
+ "pair_plus1": [],
+ "basis_label": "조사",
+ "show_week_diff": false,
+ "week_diff_title": "",
+ "winter_title": "신규·추진 노선",
+ "winter_note": "공항 공식 스케줄에는 아직 없거나 바뀔 예정인 노선입니다. 공식 스케줄에 올라오면 '주간 운항 스케줄' 탭으로 옮깁니다. 각주 번호에 마우스를 올리면 근거 기사가 보입니다.",
+ "focus_seats_sub": "",
+ "how_note": "한국과 중동·서남아시아 5개국을 오가는 직항 공급을 진단하는 데 쓰는 데이터를 모은 페이지입니다."
+}

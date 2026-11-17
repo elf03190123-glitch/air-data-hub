@@ -55,7 +55,8 @@ dash.calc('headline', {
     const known = flights.filter((f) => has(f.weekly));
     const p = known.filter((f) => PROJECT.includes(f.dest_code));
     const total = p.reduce((a, f) => a + Number(f.weekly), 0);
-    const night = p.filter((f) => Number(f.dep.slice(0, 2)) >= 20).reduce((a, f) => a + Number(f.weekly), 0);
+    // 밤 시간대 = 20시~다음 날 06시 출발 (자정 넘어 떠나는 심야편 포함)
+    const night = p.filter((f) => { const h = Number(f.dep.slice(0, 2)); return h >= 20 || h < 6; }).reduce((a, f) => a + Number(f.weekly), 0);
     return [{ project_weekly: total, night_pct: total ? Math.round((night / total) * 100) : 0, earliest_dep: p.map((f) => f.dep).sort()[0], all_weekly: known.reduce((a, f) => a + Number(f.weekly), 0) }];
   },
 });

@@ -5,7 +5,7 @@
 ## 한눈에
 - **목적**: 관심 나라마다 한국과 오가는 직항을 같은 형식의 데이터 허브로 정리한다. 형식은 필리핀(세부·보홀) 허브를 따르고, 그 허브는 사용자가 claude.ai에서 직접 정리해 만든 것이다.
 - **배포**: GitHub 공개 저장소 `elf03190123-glitch/air-data-hub`. `main` 브랜치의 `docs/`를 GitHub Pages로 배포한다. 주소는 https://elf03190123-glitch.github.io/air-data-hub/
-- **허브**: `philippines`, `central-asia`, `americas`, `europe`
+- **허브**: `philippines`, `central-asia`, `americas`, `europe`, `middle-east-south-asia`
 - **공개 저장소**: 개인 메일·전화번호를 넣지 않는다. 작성자 표기는 "AVIAREPS Korea"로 한다. 커밋 작성자는 GitHub noreply 주소를 쓴다(저장소 로컬 git config에 설정됨).
 
 ## 나라 허브 기본 규칙 (2026-11-15 사용자 결정)
@@ -30,7 +30,7 @@
 | `hubs/<slug>/datasets.json` | 데이터셋 제목·설명·갱신일(내려받기 목록에 나옴) | 직접 |
 | `hubs/<slug>/data/schedule_week.json`, `week_meta.json` | 주간 스케줄 | **`collect_week.py`로만** |
 | `hubs/<slug>/aircraft.json` | 편명 → 기종(조사). `aircraft` 값은 seat_configs의 `aircraft_label`과 글자까지 같아야 함 | 직접(출처 확인 후) |
-| `hubs/<slug>/data/flights.json` | 한국 출발편 기종표 | **`make_flights.py`로만** (aircraft.json이 있는 허브: americas, europe). central-asia는 아직 직접 작성본 |
+| `hubs/<slug>/data/flights.json` | 한국 출발편 기종표 | **`make_flights.py`로만** (aircraft.json이 있는 허브: americas, europe, middle-east-south-asia). central-asia는 아직 직접 작성본 |
 | `hubs/<slug>/data/` 나머지(seat_configs, winter_planned, glossary, schedule_timeline) | 조사·원문 데이터 | 직접(출처 확인 후) |
 | `scripts/build.py` | hubs + template → `docs/` | 직접 |
 | `scripts/collect_week.py` | 공항 공식 시간표 수집 | 직접 |
@@ -104,4 +104,9 @@ git add -A && git commit && git push                # 1분쯤 뒤 Pages 반영
   - 개요 카드와 요일별 차트는 권역별(서유럽·남유럽·중·동유럽·북유럽·튀르키예)로 묶는다. 공항 행에는 나라를 표시한다.
   - 좌석이 편마다 달라지는 경우는 주로 들어가는 버전으로 계산하고 비고에 적는다(LOT 787-8/9, 핀에어 A350 두 버전, 대한항공 777 A/B).
 - 2026-11-18 탭 주소(`#탭`)로 열 때 화면이 그 섹션 위치로 내려가던 문제를 고쳤다. `dash-shim.js`가 처음에 `#`을 떼어 두고, `hub.js`가 페이지 로딩이 끝난 뒤(load 이벤트) `#`을 다시 붙인다. 로딩 중에 붙이면 브라우저가 다시 내려간다.
+- 2026-11-18 사용자 요청으로 `middle-east-south-asia` 추가.
+  - 범위: 중동(아랍에미리트·카타르)과 서남아시아(인도·네팔·스리랑카) 5개국, 인천 직항 6개 공항. 수도 공항 5곳에 모두 직항이 있다.
+  - 인천 목록의 타슈켄트(중앙아시아), 양곤(동남아), 아디스아바바(아프리카)는 범위 밖이라 제외.
+  - 대한항공 두바이는 2026-02-28 중동 전쟁 이후 운휴 중이다(신규·추진 노선 표에 있음).
+- 2026-11-18 항공 공급 요약의 '밤 시간대'를 20시~06시 출발로 넓혔다(자정 넘어 출발하는 중동 심야편 반영). 필리핀 외 허브 요약에서 '가장 이른 편'은 뺐다. 필리핀은 06시 전 출발편이 없어 값이 같다.
 - 필리핀 허브의 기존 단독 사이트(`aboitiz-data-hub` 저장소)는 그대로 둔다. 앞으로 고치는 것은 이 저장소의 `philippines`이다.

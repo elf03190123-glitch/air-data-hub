@@ -1,0 +1,197 @@
+[
+ {
+  "code": "EY",
+  "category": "항공사",
+  "meaning": "에티하드항공 (아랍에미리트)"
+ },
+ {
+  "code": "EK",
+  "category": "항공사",
+  "meaning": "에미레이트항공 (아랍에미리트)"
+ },
+ {
+  "code": "QR",
+  "category": "항공사",
+  "meaning": "카타르항공"
+ },
+ {
+  "code": "AI",
+  "category": "항공사",
+  "meaning": "에어인디아"
+ },
+ {
+  "code": "KE",
+  "category": "항공사",
+  "meaning": "대한항공"
+ },
+ {
+  "code": "UL",
+  "category": "항공사",
+  "meaning": "스리랑카항공"
+ },
+ {
+  "code": "OZ",
+  "category": "항공사",
+  "meaning": "아시아나항공 (공동운항, 12/17부터 대한항공 통합)"
+ },
+ {
+  "code": "LY",
+  "category": "항공사",
+  "meaning": "엘알 이스라엘항공 (2027 취항 예정)"
+ },
+ {
+  "code": "SV",
+  "category": "항공사",
+  "meaning": "사우디아 (2024 단항)"
+ },
+ {
+  "code": "MS",
+  "category": "항공사",
+  "meaning": "이집트항공 (공동운항)"
+ },
+ {
+  "code": "RJ",
+  "category": "항공사",
+  "meaning": "로열요르단항공 (공동운항)"
+ },
+ {
+  "code": "WY",
+  "category": "항공사",
+  "meaning": "오만항공 (공동운항)"
+ },
+ {
+  "code": "XY",
+  "category": "항공사",
+  "meaning": "플라이나스 (공동운항)"
+ },
+ {
+  "code": "AH",
+  "category": "항공사",
+  "meaning": "에어알제리 (공동운항)"
+ },
+ {
+  "code": "AT",
+  "category": "항공사",
+  "meaning": "로열에어모로코 (공동운항)"
+ },
+ {
+  "code": "BA",
+  "category": "항공사",
+  "meaning": "영국항공 (공동운항)"
+ },
+ {
+  "code": "IB",
+  "category": "항공사",
+  "meaning": "이베리아항공 (공동운항)"
+ },
+ {
+  "code": "LA",
+  "category": "항공사",
+  "meaning": "라탐항공 (공동운항)"
+ },
+ {
+  "code": "DL",
+  "category": "항공사",
+  "meaning": "델타항공 (공동운항)"
+ },
+ {
+  "code": "ICN",
+  "category": "공항",
+  "meaning": "인천국제공항"
+ },
+ {
+  "code": "AUH",
+  "category": "공항",
+  "meaning": "아부다비 자이드국제공항 (아랍에미리트 수도)"
+ },
+ {
+  "code": "DXB",
+  "category": "공항",
+  "meaning": "두바이국제공항"
+ },
+ {
+  "code": "DOH",
+  "category": "공항",
+  "meaning": "도하 하마드국제공항 (카타르 수도)"
+ },
+ {
+  "code": "DEL",
+  "category": "공항",
+  "meaning": "델리 인디라간디국제공항 (인도 수도)"
+ },
+ {
+  "code": "KTM",
+  "category": "공항",
+  "meaning": "카트만두 트리부반국제공항 (네팔 수도)"
+ },
+ {
+  "code": "CMB",
+  "category": "공항",
+  "meaning": "콜롬보 반다라나이케국제공항 (스리랑카 수도권)"
+ },
+ {
+  "code": "RUH",
+  "category": "공항",
+  "meaning": "리야드 킹칼리드국제공항 (사우디 수도, 직항 없음)"
+ },
+ {
+  "code": "TLV",
+  "category": "공항",
+  "meaning": "텔아비브 벤구리온국제공항"
+ },
+ {
+  "code": "MLE",
+  "category": "공항",
+  "meaning": "말레 벨라나국제공항 (직항 없음)"
+ },
+ {
+  "code": "388",
+  "category": "기종",
+  "meaning": "A380-800"
+ },
+ {
+  "code": "77W",
+  "category": "기종",
+  "meaning": "B777-300ER"
+ },
+ {
+  "code": "351",
+  "category": "기종",
+  "meaning": "A350-1000"
+ },
+ {
+  "code": "789",
+  "category": "기종",
+  "meaning": "B787-9"
+ },
+ {
+  "code": "788",
+  "category": "기종",
+  "meaning": "B787-8"
+ },
+ {
+  "code": "781",
+  "category": "기종",
+  "meaning": "B787-10"
+ },
+ {
+  "code": "333",
+  "category": "기종",
+  "meaning": "A330-300"
+ },
+ {
+  "code": "332",
+  "category": "기종",
+  "meaning": "A330-200"
+ },
+ {
+  "code": "(+1)",
+  "category": "표기 규칙",
+  "meaning": "다음 날 도착"
+ },
+ {
+  "code": "공동운항",
+  "category": "표기 규칙",
+  "meaning": "다른 항공사가 자기 편명으로 좌석을 파는 편. 실제 운항편 하나로 센다"
+ }
+]
