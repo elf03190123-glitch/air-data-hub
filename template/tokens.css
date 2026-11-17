@@ -126,6 +126,11 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
   .ab-timeline-axis { margin-left: calc(5.5rem + var(--cds-gap-sm)); }
 }
 
+/* 신규·추진 노선 표: 긴 문구 열이 너무 좁아지지 않게 (넓으면 표 안에서 가로 스크롤) */
+#table-winter td:nth-child(10), #table-winter td:nth-child(11) { min-width: 13rem; }
+#table-winter td:nth-child(12) { min-width: 18rem; }
+#table-winter td:nth-child(6), #table-winter td:nth-child(7) { white-space: normal; min-width: 8rem; }
+
 /* 정적 사이트에서 덧붙인 부분 */
 .ab-crumb { margin: 0 0 var(--cds-gap-sm); font-size: var(--cds-font-size-caption); }
 .ab-crumb a { color: var(--color-fg-muted); text-decoration: none; }

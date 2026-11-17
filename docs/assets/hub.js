@@ -219,7 +219,7 @@ dash.calc('week_vs_original', {
 
 /* ===== 화면 뼈대: 탭·카드를 설정대로 만든다 ===== */
 const fmt = d3.format(',');
-const TABS = HUB.tabs || ['overview', 'week', 'detail', 'supply', 'seats', 'seatmap', 'glossary'];
+const TABS = HUB.tabs || ['overview', 'week', 'days', 'routes', 'detail', 'supply', 'seats', 'seatmap', 'glossary'];
 document.querySelectorAll('.ab-tab').forEach((t) => { if (!TABS.includes(t.dataset.tab)) t.remove(); });
 document.querySelectorAll('.ab-page').forEach((p) => { if (!TABS.includes(p.id)) p.remove(); });
 document.querySelectorAll('[data-go]').forEach((b) => { if (!TABS.includes(b.dataset.go)) (b.closest('.ab-card') || b).remove(); });
@@ -520,7 +520,7 @@ function chipRow(e, opts, cur, set) {
   e.replaceChildren(...opts.map(([v, n]) => {
     const b = document.createElement('button'); b.className = 'ab-chip'; b.textContent = n;
     b.setAttribute('aria-pressed', cur === v ? 'true' : 'false');
-    b.addEventListener('click', () => { set(v); drawWeek(); });
+    b.addEventListener('click', () => { set(v); draw(); });
     return b;
   }));
   e.style.display = 'inline-flex'; e.style.flexWrap = 'wrap'; e.style.gap = 'var(--cds-gap-xs)';
@@ -933,18 +933,21 @@ function drawWinter() {
   }));
 }
 
-function drawWeek() { drawWeekMatrix(); drawWinter(); drawWeekDay(); drawWeekDiff(); }
+function drawWeek() { drawWeekMatrix(); drawWeekDiff(); }
 
 function draw() {
   fillMarks();
   if (current === 'supply') { drawDest(); drawTime(); drawAirline(); drawScheduleTimeline(); drawIssues(); }
   if (current === 'week') drawWeek();
+  if (current === 'days') drawWeekDay();
+  if (current === 'routes') drawWinter();
   if (current === 'detail') drawDetail();
   if (current === 'seats') drawSeats();
   if (current === 'seatmap') drawSeatMaps();
   if (current === 'glossary') drawGlossary();
 }
 
-const startTab = TABS.includes(location.hash.slice(1)) ? location.hash.slice(1) : TABS[0];
-show(startTab, false);
+const START = window.DASH_START_HASH || location.hash.slice(1);
+const startTab = TABS.includes(START) ? START : TABS[0];
+show(startTab, startTab === START);
 dash.onData(draw);

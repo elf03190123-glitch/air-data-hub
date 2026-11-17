@@ -11,6 +11,8 @@
   <nav class="ab-tabs" role="tablist">
     <button class="ab-tab" role="tab" data-tab="overview" id="tab-overview">개요</button>
     <button class="ab-tab" role="tab" data-tab="week" id="tab-week">주간 운항 스케줄</button>
+    <button class="ab-tab" role="tab" data-tab="days" id="tab-days">요일별 운항</button>
+    <button class="ab-tab" role="tab" data-tab="routes" id="tab-routes">신규·추진 노선</button>
     <button class="ab-tab" role="tab" data-tab="detail" id="tab-detail">항공편 상세</button>
     <button class="ab-tab" role="tab" data-tab="supply" id="tab-supply">항공 공급 (원문)</button>
     <button class="ab-tab" role="tab" data-tab="seats" id="tab-seats">기종별 좌석</button>
@@ -126,6 +128,40 @@
       </div>
     </div>
 
+    <div class="ab-card" id="card-week-moved" style="margin-bottom: var(--cds-gap-md);">
+      <p class="ab-note" style="margin:0;">편별 목록은 기종·좌석 정보와 합쳐 '항공편 상세' 탭에 정리했습니다. <button class="ab-go" data-go="detail">항공편 상세 보기</button></p>
+    </div>
+    <div class="ab-card ab-foot" id="card-week-reading">
+      <div class="ab-foot-grid">
+        <div>
+          <h3>읽는 법 · 출처</h3>
+          {{> week_notes}}
+        </div>
+        <div id="week-diff-box">
+          <h3>{{week_diff_title}}</h3>
+          <ul class="ab-list ab-issues" id="week-diff" data-source="week_vs_original"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 요일별 운항 -->
+  <section class="ab-page" id="days" hidden>
+    <div class="ab-card" id="card-week-day" style="margin-bottom: var(--cds-gap-md);">
+      <h3>요일별 운항 (<span data-source="week_meta" data-field="label" data-row="0">—</span>)</h3>
+      <p class="ab-note">날짜별 운항 편수를 {{day_seg_desc}} 나눠 쌓았습니다.</p>
+      <div class="ab-tools" id="wkday-dir"></div>
+      <div class="ab-legend" id="wkday-legend"></div>
+      <div class="ab-chart" id="chart-week-day" data-source="week_by_day"><div class="ab-box"></div><div class="ab-tip" hidden></div></div>
+    </div>
+
+    <div class="ab-card" style="margin-bottom: var(--cds-gap-md);">
+      <p class="ab-note" style="margin:0;">공항별 주간 합계는 '주간 운항 스케줄' 탭에 있습니다. <button class="ab-go" data-go="week">주간 운항 스케줄 보기</button></p>
+    </div>
+  </section>
+
+  <!-- 신규·추진 노선 -->
+  <section class="ab-page" id="routes" hidden>
     <div class="ab-card" id="card-winter" style="margin-bottom: var(--cds-gap-md);">
       <h3>{{winter_title}} <span class="ab-pill ab-plan">예정 · 추진 중</span></h3>
       <p class="ab-note">{{winter_note}}</p>
@@ -154,29 +190,6 @@
       </div>
     </div>
 
-    <div class="ab-card" id="card-week-day" style="margin-bottom: var(--cds-gap-md);">
-      <h3>요일별 운항 (<span data-source="week_meta" data-field="label" data-row="0">—</span>)</h3>
-      <p class="ab-note">날짜별 운항 편수를 {{day_seg_desc}} 나눠 쌓았습니다.</p>
-      <div class="ab-tools" id="wkday-dir"></div>
-      <div class="ab-legend" id="wkday-legend"></div>
-      <div class="ab-chart" id="chart-week-day" data-source="week_by_day"><div class="ab-box"></div><div class="ab-tip" hidden></div></div>
-    </div>
-
-    <div class="ab-card" id="card-week-moved" style="margin-bottom: var(--cds-gap-md);">
-      <p class="ab-note" style="margin:0;">편별 목록은 기종·좌석 정보와 합쳐 '항공편 상세' 탭에 정리했습니다. <button class="ab-go" data-go="detail">항공편 상세 보기</button></p>
-    </div>
-    <div class="ab-card ab-foot" id="card-week-reading">
-      <div class="ab-foot-grid">
-        <div>
-          <h3>읽는 법 · 출처</h3>
-          {{> week_notes}}
-        </div>
-        <div id="week-diff-box">
-          <h3>{{week_diff_title}}</h3>
-          <ul class="ab-list ab-issues" id="week-diff" data-source="week_vs_original"></ul>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- 항공편 상세 (통합) -->

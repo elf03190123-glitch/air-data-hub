@@ -6,6 +6,10 @@
 (function () {
   'use strict';
   var SOURCES = window.DASH_SOURCES || [];
+  // 주소의 #탭 이 섹션 id 와 같아 브라우저가 그 위치로 내려가 버리므로, 읽어 둔 뒤 # 을 잠시 뗀다.
+  // hub.js 가 첫 탭을 열면서 setLink 로 # 을 다시 붙인다(replaceState 라 내려가지 않음).
+  window.DASH_START_HASH = location.hash.slice(1);
+  if (window.DASH_START_HASH) { try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* 무시 */ } }
   var raw = {};          // id -> { status, data }
   var calcs = {};        // id -> { inputs, fn }
   var memo = {};         // id -> { status, data } (calc 결과 캐시)

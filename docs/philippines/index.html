@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../assets/hub.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script>window.DASH_SOURCES = ["flights", "glossary", "schedule_timeline", "schedule_week", "seat_configs", "week_meta", "winter_planned"];
-window.HUB = {"slug": "philippines", "order": 1, "title": "Aboitiz 세부·보홀 프로젝트 데이터 허브", "card_title": "필리핀 — 세부·보홀", "R": "필리핀", "focus": ["CEB", "TAG"], "focus_label": "프로젝트 대상", "focus_short": "프로젝트", "focus_names": "세부·보홀", "dest": [{"code": "CEB", "name": "세부"}, {"code": "TAG", "name": "보홀"}, {"code": "MNL", "name": "마닐라"}, {"code": "CRK", "name": "클라크"}, {"code": "KLO", "name": "칼리보(보라카이)"}], "kr": [{"code": "ICN", "name": "인천"}, {"code": "PUS", "name": "부산"}, {"code": "CJJ", "name": "청주"}], "supply_kr": ["ICN", "PUS"], "tabs": ["overview", "week", "detail", "supply", "seats", "seatmap", "glossary"], "overview_kpis": [{"label": "세부·보홀 주간 직항", "tag": true, "source": "headline", "field": "project_weekly", "row": 0, "sub": "인천·부산 출발 합계, 회/주"}, {"label": "필리핀 전체 주간 직항", "source": "headline", "field": "all_weekly", "row": 0, "sub": "세부·보홀·마닐라·클라크·칼리보, 회/주"}], "week_groups": [{"label": "세부·보홀", "codes": ["CEB", "TAG"], "tag": true}], "day_segments": [{"name": "세부", "codes": ["CEB"]}, {"name": "보홀", "codes": ["TAG"]}], "day_seg_desc": "세부·보홀과 기타 필리핀 공항으로", "pair_plus1": ["PR"], "basis_label": "원문", "show_week_diff": true, "week_diff_title": "기존 원문(10/15 제공)과 다른 점", "winter_title": "동계(10/25~) 지방 출발 필리핀편", "focus_seats_sub": " · 세부·보홀 <span data-source=\"detail_headline\" data-field=\"proj_seats\" data-row=\"0\">—</span>석"};</script>
+window.HUB = {"slug": "philippines", "order": 1, "title": "Aboitiz 세부·보홀 프로젝트 데이터 허브", "card_title": "필리핀 — 세부·보홀", "R": "필리핀", "focus": ["CEB", "TAG"], "focus_label": "프로젝트 대상", "focus_short": "프로젝트", "focus_names": "세부·보홀", "dest": [{"code": "CEB", "name": "세부"}, {"code": "TAG", "name": "보홀"}, {"code": "MNL", "name": "마닐라"}, {"code": "CRK", "name": "클라크"}, {"code": "KLO", "name": "칼리보(보라카이)"}], "kr": [{"code": "ICN", "name": "인천"}, {"code": "PUS", "name": "부산"}, {"code": "CJJ", "name": "청주"}], "supply_kr": ["ICN", "PUS"], "tabs": ["overview", "week", "days", "routes", "detail", "supply", "seats", "seatmap", "glossary"], "overview_kpis": [{"label": "세부·보홀 주간 직항", "tag": true, "source": "headline", "field": "project_weekly", "row": 0, "sub": "인천·부산 출발 합계, 회/주"}, {"label": "필리핀 전체 주간 직항", "source": "headline", "field": "all_weekly", "row": 0, "sub": "세부·보홀·마닐라·클라크·칼리보, 회/주"}], "week_groups": [{"label": "세부·보홀", "codes": ["CEB", "TAG"], "tag": true}], "day_segments": [{"name": "세부", "codes": ["CEB"]}, {"name": "보홀", "codes": ["TAG"]}], "day_seg_desc": "세부·보홀과 기타 필리핀 공항으로", "pair_plus1": ["PR"], "basis_label": "원문", "show_week_diff": true, "week_diff_title": "기존 원문(10/15 제공)과 다른 점", "winter_title": "동계(10/25~) 지방 출발 필리핀편", "focus_seats_sub": " · 세부·보홀 <span data-source=\"detail_headline\" data-field=\"proj_seats\" data-row=\"0\">—</span>석"};</script>
 <script src="../assets/dash-shim.js"></script>
 </head>
 <body>
@@ -30,6 +30,8 @@ window.HUB = {"slug": "philippines", "order": 1, "title": "Aboitiz 세부·보�
   <nav class="ab-tabs" role="tablist">
     <button class="ab-tab" role="tab" data-tab="overview" id="tab-overview">개요</button>
     <button class="ab-tab" role="tab" data-tab="week" id="tab-week">주간 운항 스케줄</button>
+    <button class="ab-tab" role="tab" data-tab="days" id="tab-days">요일별 운항</button>
+    <button class="ab-tab" role="tab" data-tab="routes" id="tab-routes">신규·추진 노선</button>
     <button class="ab-tab" role="tab" data-tab="detail" id="tab-detail">항공편 상세</button>
     <button class="ab-tab" role="tab" data-tab="supply" id="tab-supply">항공 공급 (원문)</button>
     <button class="ab-tab" role="tab" data-tab="seats" id="tab-seats">기종별 좌석</button>
@@ -46,6 +48,8 @@ window.HUB = {"slug": "philippines", "order": 1, "title": "Aboitiz 세부·보�
         <p class="ab-note">프로젝트 진단에 필요한 데이터입니다. 자료가 들어오는 대로 각 항목을 이 허브에 탭으로 추가합니다.</p>
         <ul class="ab-list">
           <li><div>주간 운항 스케줄 — 한국↔필리핀 양방향<div class="ab-meta">공항 공식 자료 · <span data-source="week_meta" data-field="label" data-row="0">—</span> 실제 운항 · <span data-source="week_meta" data-field="queried" data-row="0">—</span> 조회</div></div><span><span class="ab-pill ab-done">정리 완료</span> <button class="ab-go" data-go="week">보기</button></span></li>
+          <li><div>요일별 운항 — 날짜별 편수(세부·보홀·기타)<div class="ab-meta">공항 공식 자료 · 방향 전환</div></div><span><span class="ab-pill ab-done">정리 완료</span> <button class="ab-go" data-go="days">보기</button></span></li>
+          <li><div>동계 지방 출발 필리핀편(신규·추진)<div class="ab-meta">뉴스로 확인된 노선 · 근거 기사 포함</div></div><span><span class="ab-pill ab-done">정리 완료</span> <button class="ab-go" data-go="routes">보기</button></span></li>
           <li><div>항공편 상세 — 공항 공식 스케줄 + 원문 기종·좌석 통합 (양방향)<div class="ab-meta">편명 기준 결합 · 주간 공급석 포함</div></div><span><span class="ab-pill ab-done">정리 완료</span> <button class="ab-go" data-go="detail">보기</button></span></li>
           <li><div>항공 공급 (원문) — 한국 출발 필리핀 직항 스케줄<div class="ab-meta">2026-10-15 제공 원문 · 하계 스케줄(~10/24)</div></div><span><span class="ab-pill ab-done">정리 완료</span> <button class="ab-go" data-go="supply">보기</button></span></li>
           <li><div>공항별 한국인 입국 추이<div class="ab-meta">세부 막탄 vs 보홀 팡라오, 2024~2026 월별</div></div><span class="ab-pill">자료 대기</span></li>
@@ -169,9 +173,48 @@ window.HUB = {"slug": "philippines", "order": 1, "title": "Aboitiz 세부·보�
       </div>
     </div>
 
+    <div class="ab-card" id="card-week-moved" style="margin-bottom: var(--cds-gap-md);">
+      <p class="ab-note" style="margin:0;">편별 목록은 기종·좌석 정보와 합쳐 '항공편 상세' 탭에 정리했습니다. <button class="ab-go" data-go="detail">항공편 상세 보기</button></p>
+    </div>
+    <div class="ab-card ab-foot" id="card-week-reading">
+      <div class="ab-foot-grid">
+        <div>
+          <h3>읽는 법 · 출처</h3>
+          <ul class="ab-list">
+            <li><div>시각은 <span class="ab-strong">한국 공항 기준</span>입니다. 한국→필리핀은 한국 출발 시각, 필리핀→한국은 한국 도착 시각이며, 필리핀 현지 출·도착 시각은 공항 자료에 없습니다.</div></li>
+            <li><div>인천은 <span class="ab-strong">인천국제공항공사 여객 출·도착 시간표</span>(날짜별 실제 운항), 지방공항(김해·청주 등)은 <span class="ab-strong">한국공항공사 국제선 운항스케줄</span>(요일·적용 기간)으로 <span data-source="week_meta" data-field="label" data-row="0">—</span>을 펼쳐 셌습니다. <span data-source="week_meta" data-field="queried" data-row="0">—</span> 조회.</div></li>
+            <li><div>공동운항(코드셰어)은 실제 운항편 하나로 세고, 판매 편명은 '공동운항' 열에 적었습니다.</div></li>
+            <li><div><span data-source="week_meta" data-field="season_note" data-row="0">—</span></div></li>
+          </ul>
+        </div>
+        <div id="week-diff-box">
+          <h3>기존 원문(10/15 제공)과 다른 점</h3>
+          <ul class="ab-list ab-issues" id="week-diff" data-source="week_vs_original"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 요일별 운항 -->
+  <section class="ab-page" id="days" hidden>
+    <div class="ab-card" id="card-week-day" style="margin-bottom: var(--cds-gap-md);">
+      <h3>요일별 운항 (<span data-source="week_meta" data-field="label" data-row="0">—</span>)</h3>
+      <p class="ab-note">날짜별 운항 편수를 세부·보홀과 기타 필리핀 공항으로 나눠 쌓았습니다.</p>
+      <div class="ab-tools" id="wkday-dir"></div>
+      <div class="ab-legend" id="wkday-legend"></div>
+      <div class="ab-chart" id="chart-week-day" data-source="week_by_day"><div class="ab-box"></div><div class="ab-tip" hidden></div></div>
+    </div>
+
+    <div class="ab-card" style="margin-bottom: var(--cds-gap-md);">
+      <p class="ab-note" style="margin:0;">공항별 주간 합계는 '주간 운항 스케줄' 탭에 있습니다. <button class="ab-go" data-go="week">주간 운항 스케줄 보기</button></p>
+    </div>
+  </section>
+
+  <!-- 신규·추진 노선 -->
+  <section class="ab-page" id="routes" hidden>
     <div class="ab-card" id="card-winter" style="margin-bottom: var(--cds-gap-md);">
       <h3>동계(10/25~) 지방 출발 필리핀편 <span class="ab-pill ab-plan">예정 · 추진 중</span></h3>
-      <p class="ab-note">공항 공식 동계 스케줄이 아직 올라오지 않아(10/16 확인) 위 표에는 넣지 않았습니다. 뉴스로 확인된 노선만 따로 모았고, 공식 스케줄이 나오면 확인 후 반영합니다. 각주 번호에 마우스를 올리면 근거 기사가 보입니다.</p>
+      <p class="ab-note">공항 공식 동계 스케줄이 아직 올라오지 않아(10/16 확인) '주간 운항 스케줄' 표에는 넣지 않았습니다. 뉴스로 확인된 노선만 따로 모았고, 공식 스케줄이 나오면 확인 후 반영합니다. 각주 번호에 마우스를 올리면 근거 기사가 보입니다.</p>
       <div class="ab-chart ab-winter" id="chart-winter" data-source="winter_planned">
         <div class="ab-tablebox" style="max-height: none;">
           <table class="ab-table" id="table-winter" data-source="winter_planned" data-row-key="id">
@@ -197,34 +240,6 @@ window.HUB = {"slug": "philippines", "order": 1, "title": "Aboitiz 세부·보�
       </div>
     </div>
 
-    <div class="ab-card" id="card-week-day" style="margin-bottom: var(--cds-gap-md);">
-      <h3>요일별 운항 (<span data-source="week_meta" data-field="label" data-row="0">—</span>)</h3>
-      <p class="ab-note">날짜별 운항 편수를 세부·보홀과 기타 필리핀 공항으로 나눠 쌓았습니다.</p>
-      <div class="ab-tools" id="wkday-dir"></div>
-      <div class="ab-legend" id="wkday-legend"></div>
-      <div class="ab-chart" id="chart-week-day" data-source="week_by_day"><div class="ab-box"></div><div class="ab-tip" hidden></div></div>
-    </div>
-
-    <div class="ab-card" id="card-week-moved" style="margin-bottom: var(--cds-gap-md);">
-      <p class="ab-note" style="margin:0;">편별 목록은 기종·좌석 정보와 합쳐 '항공편 상세' 탭에 정리했습니다. <button class="ab-go" data-go="detail">항공편 상세 보기</button></p>
-    </div>
-    <div class="ab-card ab-foot" id="card-week-reading">
-      <div class="ab-foot-grid">
-        <div>
-          <h3>읽는 법 · 출처</h3>
-          <ul class="ab-list">
-            <li><div>시각은 <span class="ab-strong">한국 공항 기준</span>입니다. 한국→필리핀은 한국 출발 시각, 필리핀→한국은 한국 도착 시각이며, 필리핀 현지 출·도착 시각은 공항 자료에 없습니다.</div></li>
-            <li><div>인천은 <span class="ab-strong">인천국제공항공사 여객 출·도착 시간표</span>(날짜별 실제 운항), 지방공항(김해·청주 등)은 <span class="ab-strong">한국공항공사 국제선 운항스케줄</span>(요일·적용 기간)으로 <span data-source="week_meta" data-field="label" data-row="0">—</span>을 펼쳐 셌습니다. <span data-source="week_meta" data-field="queried" data-row="0">—</span> 조회.</div></li>
-            <li><div>공동운항(코드셰어)은 실제 운항편 하나로 세고, 판매 편명은 '공동운항' 열에 적었습니다.</div></li>
-            <li><div><span data-source="week_meta" data-field="season_note" data-row="0">—</span></div></li>
-          </ul>
-        </div>
-        <div id="week-diff-box">
-          <h3>기존 원문(10/15 제공)과 다른 점</h3>
-          <ul class="ab-list ab-issues" id="week-diff" data-source="week_vs_original"></ul>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- 항공편 상세 (통합) -->

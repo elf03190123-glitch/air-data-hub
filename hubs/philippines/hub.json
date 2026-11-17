@@ -56,6 +56,8 @@
  "tabs": [
   "overview",
   "week",
+  "days",
+  "routes",
   "detail",
   "supply",
   "seats",
@@ -111,7 +113,7 @@
  "show_week_diff": true,
  "week_diff_title": "기존 원문(10/15 제공)과 다른 점",
  "winter_title": "동계(10/25~) 지방 출발 필리핀편",
- "winter_note": "공항 공식 동계 스케줄이 아직 올라오지 않아(10/16 확인) 위 표에는 넣지 않았습니다. 뉴스로 확인된 노선만 따로 모았고, 공식 스케줄이 나오면 확인 후 반영합니다. 각주 번호에 마우스를 올리면 근거 기사가 보입니다.",
+ "winter_note": "공항 공식 동계 스케줄이 아직 올라오지 않아(10/16 확인) '주간 운항 스케줄' 표에는 넣지 않았습니다. 뉴스로 확인된 노선만 따로 모았고, 공식 스케줄이 나오면 확인 후 반영합니다. 각주 번호에 마우스를 올리면 근거 기사가 보입니다.",
  "focus_seats_sub": " · 세부·보홀 <span data-source=\"detail_headline\" data-field=\"proj_seats\" data-row=\"0\">—</span>석",
  "how_note": "세부 막탄·보홀 팡라오 공항 한국 시장 진단에 쓰는 데이터를 한곳에 모은 페이지입니다."
 }
